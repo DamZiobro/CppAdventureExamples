@@ -1,0 +1,34 @@
+Anonymous namespace is kind of namespace with specified name. Such kind of namespace is visible only within file where it is defined within. I allows define variables and functions which could be visible as global, but within one file only. Thanks to that such files are not global within whole program. It also allow avoids making global static variable.
+Let's see an example of defining and usage of anonymous namespace. Consider following main.cpp file:
+<pre class="brash: cpp">
+
+#include<iostream>
+using namespace std;
+
+//this anonymous namespace will be visible only withing this file 
+//'variable' cannot be used within other files (it is not global variable)
+namespace {
+	int variable;
+}
+
+void variableFunc(){
+   //using variable withing func
+   cout << " variable in function: " << variable << endl;
+}
+
+
+int main(){
+
+    variable = 10;
+    cout << " variable = " << variable << endl;
+    variableFunc();
+    cout << " variable =" << variable << endl;
+
+    return 0;
+}
+
+</pre>
+In the above example we have anonymous namespace containing one int typed variable. This variable can be used as global variable withing this main.cpp file but will not be visible inside any other files.
+</br></br>
+That is simple example of usage anonymous variables. If you would like to compile it and play with it (changing or adding some parts of code to check what happends than) you can download it from here:
+https://github.com/xmementoit/CppAdventureExamples/advancedCpp/anonymousNamespace
