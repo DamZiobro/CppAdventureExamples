@@ -11,7 +11,7 @@ ADD_DEFINITIONS(-std=c++11)
 #source of project
 set(SRC
 
-explicitOverrideAndFinal.cpp
+cpp11_explicitOverrideAndFinal.cpp
 )
 
 #==============================================================================

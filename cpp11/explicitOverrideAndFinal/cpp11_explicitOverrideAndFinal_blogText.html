@@ -1,0 +1,61 @@
+Consider following inheritance situation:<br />
+<pre class="brash:cpp">
+
+class base {
+public:
+    virtual void override_func(int a){}
+};
+
+class derived1 : public base {
+public:
+    virtual void override_func(double a){}
+};
+
+</pre>
+Question is: will we have two override_func() functions in derived1 or only one because override_func(double a) from derived1 overrides override_func(int a) from base_class? Two, of course. It is because those functions has different signature (different types of arguments in this case). However sometimes user does not notice it and think that function override_func(double a) overrides function override_func(double a) in derived1 class. It can cause problem especially if someone is doing some modifications in override_func(int a) in base class and expects that those changes will have inpact on override_func(double a) from derived1 class.
+C++11 has smart mechanism which allow to notify compiler and other users that in derived class we would like to override function having exact the same signature in base class. It can be done using override keyword.
+Let's declare override_func(double a) in derived1 class this way:
+<pre class="brash:cpp">
+
+class derived1 : public base {
+public:
+    virtual void override_func(double a) override {} //compile error - not the same signature in base class
+};
+
+</pre>
+What happend's here? We will have compile because using override function we infor compiler (and users) that we would like to override function having exactly the same signature in base class. In our case base class override_func(int a) has int type argument while in derived1 class we have double type argument. Compiler cannot find exact-signatured function in base class so it throws compiler-error.
+This mechanism is useful for better controlling overriding in C++11.
+</br></br>
+Second useful new C++11 feature related to inheritance and polymorphism is final keyword. If we label function using final keyword, we notify compiler(and user) that such function cannot be overritten in any derived class.
+Let's see it on example:
+<pre class="brash:cpp">
+
+class base {
+public:
+    virtual void final_func() final {}
+};
+class derived1 : public base{ 
+public:
+    virtual void final_func() {} //compile error - cannot override final function
+}
+
+</pre>
+While we are trying compile above example we will receive compile error. It is because function final_func() in base class is labeled as final function, so we cannot override it in derived1 class, but we are trying to do that.
+</br></br>
+We can also label class using final keyword. Such labeld final class cannot be inherited by any other class.
+Let's see example:
+<pre class="brash:cpp">
+
+class base final {
+public:
+    virtual void final_func() final {}
+};
+class derived1 : public base{ //compile error - cannot inherit from final class
+}
+
+</pre>
+In above example we will receive compile error, because class base is labelled as final. While we are trying to inhert from that class (derived1 class is trying it) compiler notify incorrectness and notify us about it using error message.
+</br></br>
+That's it for today. If you would like to test above features yourself I prepared simple example of above mechanisms. You can compile it and try to compile and modify. Try to uncomment blocks of code labelled as UNCOMMENT and you will compiler errors and behaviours of program according to above examples. This example you can find here:
+https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/explicitOverrideAndFinal
+
