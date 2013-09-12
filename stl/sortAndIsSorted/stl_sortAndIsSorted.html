@@ -1,0 +1,49 @@
+Today I would like to show first article about some example of usage STL (Standard Templage Library) library and its algoirthms. First thing which I would like to present is usage of std::sort() and std::is_sorted() algorithms.
+Function std::sort() sorts selected range of elements of container in ascending order.
+Function std::is_sorted() checks whether selected range of elements of container is sorted in ascending order.
+Take a look at following example of usage those functions:
+<pre brush="cpp">
+#include <iostream>
+#include <algorithm> //need to include to use sort() and is_sorted()
+ 
+int main() 
+{
+    std::vector<int> testVector = {3,1,5,3,2,5};
+
+    //printing vector and checking whether it is sorted or not
+    for (auto i : testVector) std::cout << i << ' ';
+    //I
+    std::cout << ": is testVector sorted: " << std::is_sorted(testVector.begin(), testVector.end()) << '\n';
+
+    //II - sorting first tree elements of vector
+    std::sort(testVector.begin(), testVector.begin()+3);
+
+    //checking whether first 3 elements of vector are sorted
+    for (auto i : testVector) std::cout << i << ' ';
+    //III
+    std::cout << ": are first 3 elements_sorted: " << std::is_sorted(testVector.begin(), testVector.begin()+3) << '\n';
+
+    //IV - sorting all elements of vector
+    std::sort(testVector.begin(), testVector.end());
+
+    //checking whether all elements of vector are sorted
+    for (auto i : testVector) std::cout << i << ' ';
+    std::cout << ": is testVector sorted: " << std::is_sorted(testVector.begin(), testVector.end()) << '\n';
+
+}
+</pre>
+
+Output of below example is:
+<pre brush="cpp">
+3 1 5 3 2 5 : is testVector sorted: 0
+1 3 5 3 2 5 : are first 3 elements_sorted: 1
+1 2 3 3 5 5 : is testVector sorted: 1
+</pre>
+
+At the beginning of that example we declare vector of int-typed elements using initializer_list (URL) and prints it using range-based for loop (URL).
+In point (I) we are using std::is_sorted() function to check if our vector is sorted according to ascending order. Notice that we are iterating through whole vector (from testVector.begin() to testVector.end()). Function returns false because our vector is not sorted yet. We can see results in first line of output.
+In point (II) we are sorting part of our testVector. Notice that we are not iterating through whole vector here, therefore only that part where we are iterating will be sorted. In that case, only three first elements of vector will be sorted.
+Now look at point (III). We are checking here whether first three elements of our vector are sorted (we are iterating through 3 elements in std::is_sorted() function). Now std::is_sorted() returns true because first three elements are already sorted. We can see results of that sorting in second line of program output.
+Last part of that example using std::sort to sort all elements of testVector. We can see result in third line of our output.
+
+If you would like to compile below example on your computer you can quickly download it from github repository:https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/sortAndIsSorted 
