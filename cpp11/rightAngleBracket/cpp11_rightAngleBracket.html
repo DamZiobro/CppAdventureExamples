@@ -1,0 +1,16 @@
+In C++03 ">>" is always interpreted as right shift operator. It causes problem for nested template declaration like here:
+<pre class="brash:cpp">
+std::vector<std::vector<int>> testVectorOfVectors; // compile error in C++03
+</pre>
+In above example for C++03 we have compilation error because of unintended interpretation  of ">>". Compiler interpret it as right shift operator - not like two nested vectors.
+Preper syntax in above situation should include space character between two ">" characters closing nested templates like here:
+<pre class="brash:cpp">
+std::vector<std::vector<int> > testVectorOfVectors; // compile error in C++03
+</pre>
+It it not very comfortable and sometimes causes problems with finding reason of compilation error.
+Fortunately, C++11 standard solves that problem. It implements proper interpretation of nested templates without space between two right angle operators ">".
+Therfore in C++11 following syntax:
+<pre class="brash:cpp">
+std::vector<std::vector<int>> testVectorOfVectors; // two nested vectors for C++11 standard
+</pre>
+is properly interprated as two nested vectors.
