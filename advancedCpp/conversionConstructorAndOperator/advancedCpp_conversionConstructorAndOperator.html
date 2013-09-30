@@ -1,0 +1,27 @@
+When we are defining class we sometimes would like to allow easly convert that class from and to previously defined-type objects (ex. int). We can do that using conversion constructor and conversion operator: <br />
+<ul>
+    <li><i><u>conversion constructor</u></i> - it is constructor which has one parameter - type which constructor should allow to convert from. It allows to convert previously defined object of type as in constructor paramter into object of class where constructor belongs to</li>
+    <li><i><u>conversion operator</u></i> - it is overloaded operator type() - where type is type of object which we can convert this class object into</li>
+</ul>
+
+Let's see below example for better understanding:<br />
+
+Output of this example is: <br />
+
+Inside int conversion constructor -> i: 10
+Inside string conversion constructor - > s: testString
+Inside int conversion operator -> intValue: 10
+Inside string conversion opertoar -> stringValue: testString
+testInt value: 10
+testString value: testString
+
+In that example in our class TestClass we are defining two conversion constuctors. 
+<ul>
+    <li>conversion constructor for type int (point I)</li>
+    <li>conversion constructor for type string (point II)</li>
+</ul>
+Next in main function we are invoking that constructors converting int and string types to our class TestClass type (point V and VI - see first two lines of output).<br />
+In point III and IV we are defining two conversion operator (into type int and string). As you can see in points VII and VIII, those conversion operators allows us convert object of TestClass to object of int or string.<br />
+Now take a look at points IX and X. We you uncommet it you will receive compiler error. It is because we have defined neither conversion constructor nor conversion operator for type char*.<br />
+
+I hope you understood how to define and how to use conversion constructor and conversion operator. If you have any questions or suggestions, write in comments, please.
