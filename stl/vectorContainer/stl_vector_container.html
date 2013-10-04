@@ -1,0 +1,37 @@
+vector is one of the containers defined in Standard Template Library (STL) of C++. It is as wrapped array which can dynamically change its size (array + additional methods to do array operations)
+allows quickly and easily add elements to the end of itself. vector elements are placed in continous part of memory (as arrays), so we can use normal pointer aritmetic 
+or random-access operator to got through vector elements. Vector (as other containers from STL library) can be also accessed by iterator mechanism which will be described in on of next posts.<br />
+
+Below image depicts how we can imagine vector: <br />
+
+
+Now let see an example of usage usage vector:<br />
+<script src="https://gist.github.com/xmementoit/6825383.js"></script><br /><br />
+
+Output of this example is: <br />
+<script src="https://gist.github.com/xmementoit/6825491.js"></script><br /><br />
+
+In order to use vector we need to include vector header (point Ia). Now we are declaring vector of int elements in point I. And we are pushing 3 elements to it (point II and III). 
+As you can see we are using vector method push_back() and emplace_back(). Both of those methods works similar, they append new element to vector container. Difference is that emplace_back()
+is method which has been added in C++11 standard and use new move semantics from C++11. It is more efficient method of appending elements to vector because it create elements in-place 
+instead of creating temporary element and copying it to the end of vector. <br />
+
+In point IV we are getting first element of vector (index = 0) using at() vector's method which takes one argument (index of element in vector) and returns value reference to element of specified location.<br />
+
+Point V describe how go through vector using random-access operator []. We are also using size() vector method here, which returns number of elements which vector contains.<br />
+
+Point VI depicts how to use max_size() method which returns maximum number of elements which we can place in our vector.<br />
+
+In point VII we can see usage of another useful vector method: clear(), which removes all elements from vector.<br /><br />
+
+There is one more container very similar to vector in STL library - deque container. This continer works like vector but has additional function which helps adding elemnts to at the beginning of deque container (vector does not have such functions). So in general, deque is like vector which allows add new elements at the beginning of itself.<br />
+
+More information about vector and deque and detailed description of all of its methods you can find in C++ Reference website:<br />
+<ul>
+    <li>vector -<a href="http://en.cppreference.com/w/cpp/container/vector">http://en.cppreference.com/w/cpp/container/vector</a></li>
+    <li>deque - <a href="http://en.cppreference.com/w/cpp/container/deque">http://en.cppreference.com/w/cpp/container/deque</a></li>
+</ul>
+
+Code of above example you can download from here:<br />
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/vectorContainer">https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/vectorContainer</a>
+
