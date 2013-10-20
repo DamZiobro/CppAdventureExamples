@@ -1,0 +1,28 @@
+<strong>Template function</strong> are special types of C++ function which can be used with different types (generic types). Thanks to that 
+we can create one body of function which can be used for many different types. 
+When we are creating template function compiler does not define any function for use at that time. Generation of funciton basing on templates are done during compilation process basing of 
+differnt usage of template class. <br /><br />
+
+For better understanding take a look on following example:<br />
+<script src="https://gist.github.com/xmementoit/7074033.js"></script>
+
+Output of this example is:<br />
+<script src="https://gist.github.com/xmementoit/7074045.js"></script>
+
+In point I, we are defining template function which should return sum of two parameters. Without templates we need to define such function separately
+for each type which we should use it with (ex. separate function for int type, separate for double, separate for any other type). Thanks to template we 
+can generate body of that function only once (as in point I) and use it to any type which is able to use body of that function. In our example we can use 
+this template for any type which has overridden + operator. <br /><br />
+
+Definition of template is simple. We are defining name of types which will be replaced with real types during usage of template function. In our case we 
+are defining replaced name myType. 
+
+Usage of template function is shown in point II. We are using real type which should be used with our template function in angle brackets.
+We have two examples of usage our function. First one for int type. Second one for double type. We we are using template function of some type, compiler 
+is using our template definition to create definition of real function based on selected type using template. <br /><br />
+
+Templates are very useful tool for generic programming. STL (Standard Template Library) is based on templates. Each element of STL library is generic element.
+Each STL algorithm is based on template functions.<br /><br />
+
+Above example you can find on our github account here:<br />
+https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/templateFunctions
