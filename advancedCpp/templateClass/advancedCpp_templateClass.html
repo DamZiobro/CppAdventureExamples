@@ -1,0 +1,18 @@
+<strong>Template class</strong> concept is similar to template functions. It allows creating generic type classes, which means that we can 
+have many different classes which different only in terms of types using one class code only. <br /><br />
+
+See example below for better explanation:<br />
+<script src="https://gist.github.com/xmementoit/7074492.js"></script>
+
+Output of this example is: <br />
+<script src="https://gist.github.com/xmementoit/7074476.js"></script>
+
+Point I depicts definition of template class. As you can see it is very similar to definition of template function. We are defining myType as type
+which will be replaced with real type during usage of template class. Then we are defining class normally with usage of mapped temporary type.<br /><br />
+
+Points II and III shows how to use template class for different class. We are defining two instances of our template class - for int and double types. 
+Compiler will implicitely generate bodies of two clases based on those types and template definition. As for template functions, we are selecting real type 
+using angle brackets.<br /><br />
+
+Above example you can find on our github repository here:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/templateClass">https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/templateClass</a>
