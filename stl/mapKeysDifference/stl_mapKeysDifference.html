@@ -1,0 +1,22 @@
+Today, I would like to show how to quickly find difference between two maps of STL library basing on keys only. We need to compare two
+maps of STL library and find third map which will contain only those elements of first map which keys are not being placed within second map.<br /><br />
+
+Take a look on code:
+<script src="https://gist.github.com/xmementoit/7563456.js"></script>
+Output of this code is:
+<script src="https://gist.github.com/xmementoit/7563463.js"></script>
+<br />
+
+In point I we are defining struct type having overloaded of operator(). This structure will be used as <a href="http://cppadventure.blogspot.co.uk/2013/09/advanced-c-function-object.html">function object</a>
+to compare two elements of maps (std::pair) basing on keys only. <br />
+In point II we are defining two maps which will be compared. We are going to receive all std::pairs from firstMap which keys are not being placed withing secondMap.<br />
+In point II we are declaring diffMap map which will contain result of our differentiation.<br />
+Point IV is key point of our function. In that point we are using <a href="http://en.cppreference.com/w/cpp/algorithm/set_difference" target="_blank">std::set_difference</a> algorithm.
+This algorithm returns difference of two ranges of STL containers. First 4 arguments are begins and ends of two ranges of containers which should be compared. 
+5th argument is inserter of different element. This inserter will fulfill our diffMap map which will contain difference which we are looking for.
+For most of STL containers those 5 arguments are enough for comparison and finding difference. However if want to compare keys of map only, we need to redifine
+our comparison function. In order to do that we are using overloaded operator() of struct comparatorStruct defined in point I. <br />
+That's it. In point V we are displaying our difference map using <a href="http://cppadventure.blogspot.co.uk/2013/08/c11-auto-type.html">C++11 auto type</a>. <br /><br />
+
+As usual, if you would like to download that code and compile it you can find it (as other codes used in this blog) on our github account here:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/mapKeysDifference">mapKeysDifference</a>
