@@ -1,0 +1,26 @@
+Here is the first article about <a href="http://www.boost.org/">Boost libraries</a> features. I am starting that new series of articles with explenation of scoped_ptr - 
+one of the Boost smart pointers. <br />
+
+scoped_ptr is smart pointer that is the only owner of dynamically allocated object and is automatically freed allocated memory when destructor of scoped_ptr is called. <br />
+
+See example below: <br />
+<script src="https://gist.github.com/xmementoit/7571657.js"></script>
+Output of this example is: <br />
+<script src="https://gist.github.com/xmementoit/7571691.js"></script>
+
+In point I and II we are defining two scoped_ptr objects - one for int and one for Test (custom class) object. <br />
+Notice comment marked as Ia. This is impossible operation for scoped_ptr. It is try to assign ownership of allocated object to second pointer. scoped_ptr
+does not allow it. <br />
+
+Point III shows how we can assign new values to object which refers to scoped_ptr. We can use dereference operator as for normal pointers (this operator is overloaded in Boost smart pointers)
+as well as use get() function implemented to Boost smart pointers. <br />
+
+Point IV shows how to use reset function to replace object which is being pointed by scoped_ptr. We can use reset() function for it. After using that function
+new object will be allocated and old object will be freed automatically. Therefore you can see text: <i>"Constructor of Test class: 2 Destructor of Test class: 1"</i> in the output text. <br />
+
+Take a special look at point V. This is place where we are exiting area of visibility of our scoped_ptr objects. In that place memory allocated for those pointers
+will be automatically freed. We do not have to use delete function like for normal pointers. Smart pointers automatically freed memory associated with dynamically 
+allocated object which is being pointed by them while scoped_ptr destructor is being invoked. <br />
+
+Code of this example can be downloaded from here:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/scopedPointer">https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/scopedPointer</a>
