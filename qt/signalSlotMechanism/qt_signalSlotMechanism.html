@@ -1,0 +1,37 @@
+This is first article describing some aspects of programming with Qt framework. I am going to focus on most important basic feature of Qt framework: 
+signal-slot mechanism.<br /><br />
+
+At the beginning take a look on below QT code:
+<script src="https://gist.github.com/xmementoit/7647285.js"></script>
+
+Output of that code is this window:
+
+
+This quick code is something like "Hello world" of Qt programming. Let's take a detailed look on the code.<br /><br />
+
+In point I we are declaring QApplication object which will contain indefinite loop where which will be invoked after program starts 
+in order to wait for user interactions. We can also analysing command line input parameters in this line, but we are not doing it because we do not have 
+any input parameters for our application.<br /><br />
+
+In point II we are declaring QPushButton object which will be the only object of our application. As only parameter of our definition we are putting text which 
+should be displayed on our button - "Hello World".<br /><br />
+
+Point III is key point of this example. It presents basic usage of signal-slot mechanism. We are using QObject::connect function here to bind signal and slot.<br />
+This function has following syntax: <br />
+QObject::connect(senderObject, SIGNAL(senderSignal), receiverObject, SLOT(receiverSlot))
+Where:
+<ul>
+    <li><i>senderObject</i></li> - object where signal is send from
+    <li><i>SIGNAL(senderSignal)</i></li> - signal which is send to receiverObject 
+    <li><i>receiverObject</i></li> - object will should receiver sent signal
+    <li><i>SLOT(receiverSlot)</i></li> - slot function which should be invoked after receiving signal in receiverObject
+</ul>
+In our case we are connecting signal clicked() from our button object with function quit() of our application. Signal clicked() is emited when user
+click on button object. It means that when user click on button object signal clicked() will be emited and capatured by receiverObject. Then receiverObject runs function
+quit(). Than function closes our application.<br /><br />
+
+In point IV we are invoking function show() of our QPushButton which displays our button on screen. <br /><br />
+
+In point V we are starting our application. Function exec() contains infinite loop which will listen for user interactions. <br /><br />
+
+As usual, code of this example you can find on our github account: <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/qt/signalSlotMechaism">Signal-Slot mechanism</a>
