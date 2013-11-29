@@ -1,0 +1,31 @@
+<i>Iterators are a generalization of pointers which allow a programmer to work with different data structures in the uniform manner</i>. In STL we are using
+iterators to got through STL container for getting and setting its elements. In order to better understand working with iterators, take a look on below example:<br />
+<script src="https://gist.github.com/xmementoit/7705260.js"></script>
+Output of this example is:<br />
+<script src="https://gist.github.com/xmementoit/7705268.js"></script>
+
+In point I we are defining two vector containers using C++11 <a href="http://cppadventure.blogspot.co.uk/2013/08/c11-initializer-lists.html">initializer lists</a>.<br />
+Point II shows as definition of iterator which we will use to go through our vector structures to examine their elements. We are setting our iterator to 
+first element of our mVector container. Because iterators are generalized pointers we can imagine this operation as setting up pointer to the first element 
+of our structure. This operation can be illustrated like Step 1 on the picture below. <br />
+In C++11 we can simplify declaration of STL iterators using 
+<a href="http://cppadventure.blogspot.co.uk/2013/08/c11-auto-type.html">auto type</a> as shown in point IIa.<br /><br />
+
+In point III, IV and V we can see process of going through container elements using iterator mechanism. This process has been ilustrated on the picture below.
+We have while loop where we are checking whether we reached myVector.end() element or not. myVector.end() element is reached when our iterator points to address 
+placed just after last container element (as shown in Step 10 of below picture). <br /><br />
+
+PICTURE
+
+In point IV we have example of getting value of element where our iterator points to. Point V ilustrate using operator++() to move iterator to next element of
+continer. Both those operations works similar way as normal pointer dereferencing and pointer arithmetic. Therefore we can see similarity of interators to 
+normal pointers. <br /><br />
+
+Point VI depicts usage of iterator in for loop, where point VII shows how to assign value to element where iterator points to. <br /><br />
+
+In terms of vector container from above example, using iterators is not the only way to get and set values of container elements. We can use random-access 
+operator[] for it. It is because vector is allocated as continous part of memory. The same situation is for deque container. However other containers like:
+list, set, map does does not have random access to its elements. Therefore we cannot use operator[] go get its elements. We should use iterators when 
+we are using such containers.
+
+Code of above examples can be found in GitHub repository of this blog here: <a href=" https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/iterators"> STL iterators</a>
