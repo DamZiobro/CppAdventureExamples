@@ -1,0 +1,27 @@
+One of the basic and most useful STL algorithms is algorithm which can be used count number of elements in selected container according to specified criteria. 
+In order to do that we can use std::count or std::count_if algorithm. <br /><br />
+
+<ul>
+    <li>std::count(firstElementIterator, lastElementIterator, elementForSearch) - is function which will go through container using firstElementIterator and lastElementIterator
+    and return number of container elements which value is equal elementForSearch </li>
+    <li>std::count_if(firstElementIterator, lastElementIterator, UnaryPredicateFunction) - is function which examine range from firstElementIterator to lastElementIterator and 
+    return number of container elements which fulfill UnaryPredicateFunction criteria. UnaryPredicateFunction is function having following signature: bool functionName(const Type& a). 
+    So, count_if returns number of elements where UnaryPredicateFunction returns true for.</li>
+</ul><br /><br />
+
+For better understanding let's take a look on balow example:
+<script src="https://gist.github.com/xmementoit/7788989.js"></script>
+Output of this example is: 
+<script src="https://gist.github.com/xmementoit/7789004.js"></script>
+
+
+In point I we are defining vector of int elements which we will examine. We are using C++11 <a href="http://cppadventure.blogspot.co.uk/2013/08/c11-initializer-lists.html">std::initializer_list</a> for it.<br /><br />
+In point II we are examining all myVector elements and getting how many elements has value 6. There are 4 such elements.<br /><br />
+Point III presents how we can examing one part region of vector. Here we are examining only first 5 elements of vector and finding how many of its have value 6. 
+Of course there is only one such element within first 5 elements of myVector.<br /><br />
+Point IV presents how to use std::count_if value with predefined UnaryPredicateFunction. We are defining our UnaryPredicateFunction in point IVa ASCII
+isEven() function. This predicate function will examine whether its argument is even int number. We are using our isEven function withing std::count_if algorithm 
+and getting that we have 6 even numbers withing myVector.
+
+Source code of above example can be downloaded from our github account here:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/countAndCountIf">https://github.com/xmementoit/CppAdventureExamples/tree/master/stl/countAndCountIf</a>
