@@ -1,0 +1,32 @@
+C++11 standard introduces new type of functions for C++ programming - lambda functions. <br /><br />
+
+<i>Lambda function is a anonymous (unnamed) function which you can write directly inline in the code.</i><br /><br />
+
+Lambda function allows do some operations visible like a function without declaring it as a function (saving space and time). <br /><br />
+
+C++ lambda function has following syntax:
+<center>[capture](arguments){body}</center>
+<ul>
+    <li>capture - value which should be captured outside of body class</li>
+    <li>arguments - list of arguments of function (the same syntax as for normal C++ functions)</li>
+    <li>body - body of function - statements which should be exectued when function is invoked</li>
+</ul>
+
+For better understanding take a look fo below example:
+<script src="https://gist.github.com/xmementoit/7912057.js"></script>
+Output of this example is: 
+<script src="https://gist.github.com/xmementoit/7912118.js"></script>
+
+
+In point I we are initializing vector using C++11 <a href="http://cppadventure.blogspot.co.uk/2013/08/c11-initializer-lists.html">initializer_list</a><br /><br />
+
+Point II is key point of our example. It demonstrate using lambda function (3rd argument of for_each function) together with with <a href="http://en.cppreference.com/w/cpp/algorithm/for_each">for_each</a> algorithm of STL library
+in order to calculate sum of vector elements. In C++03 we had to define separate function (outside of our main function) in order to us it within some STL algorithm
+(ex. for_each as in this example). Thanks to lambda functions we can define such us such function without declaration - in place. It is definitely easier
+especially if we are going to use some small function once in our code.<br /><br />
+
+In point III we are printing results of our calculations.<br /><br />
+
+As you can see, lambda functions are very comfortable when you are going to use some small function only once withing your code (ex. calculate some sum).<br />
+Code of this example you can find in our GitHub account here: <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/lambdaFunctions">https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/lambdaFunctions</a>
+
