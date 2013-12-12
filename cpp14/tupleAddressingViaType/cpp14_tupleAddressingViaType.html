@@ -1,0 +1,20 @@
+Today I would introduce one of new features which will arrive to C++ with new language standard (C++14) which is going to be release in 2014. 
+In order to compile example from this article you need to have compiler supporting C++14 standard. The newest version of GCC supports it.<br /><br />
+
+I would like to introduce you features called <i>Tuple addressing via type</i> which allows us to get <a href="http://cppadventure.blogspot.co.uk/search?q=tuple">tuple</a> element value using type name instead of 
+tuple parameter number. Of course it is possible only for type names which are not ambiguous. Let's take a look on below example for better understanding:
+
+Output of this example is: 
+
+In point I we are declaring our tuple type containng of 2 int elements and on string element.<br /><br />
+
+In point II we are using std::get function to get values of our tuple typed variable using tuple parameters numbers. This feature is well known from 
+C++11 standard. <br /><br />
+
+Point III shows new (introduced in C++14 standard) way of getting values of tuple elements. We are getting string type element using type name 
+instead of putting parameter number. This can be more comfortable. Of course it is not possible to get int paramters values that way, because we have more 
+than one int parameters in our tuple so tryting to get int element via type name is ambiguous. It is snown in commented code of point IV. If you uncomment 
+this code and will try to compile example, you will receive compilation error.
+
+Code of this example can find on our GitHub account here: <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp14/tupleAddressingViaType">https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp14/tupleAddressingViaType</a>
+
