@@ -1,10 +1,11 @@
-Shared pointer is another kind of Boost library's pointer. It is similar to <u>scoped pointer</u> but shared pointer allows 
+Shared pointer is another kind of Boost library's pointer. It is similar to <a href="http://cppadventure.blogspot.co.uk/2013/11/boost-scoped-pointer.html">scoped pointer</a> but shared pointer allows 
 share ownership of object. We are able to assign two or more pointers pointing to the same object (it was impossible for scoped pointer).<br /><br />
 
 Take a look to the example below:
+<script src="https://gist.github.com/xmementoit/8052343.js"></script>
 
 Output of this example is: 
-
+<script src="https://gist.github.com/xmementoit/8052388.js"></script>
 
 In point I we are initializing two shared pointers pointing to two separate instances of TestClass class, then we are printing 
 its values in point II.<br /><br />
