@@ -1,0 +1,35 @@
+Today I would like to present you operations related to date and time using Boost.DateTime library. This library contains set of 
+classes, templates and algorithms prepared for date and time related tasks. This article focuses on date operations. Time operations will be presented 
+in one of the future articles. <br /><br />
+
+Example of usage some basic Boost.DateTime date operations you can see here:
+<script src="https://gist.github.com/xmementoit/8219144.js"></script>
+
+Output of this example is (for day 3 January 2014):
+<script src="https://gist.github.com/xmementoit/8219156.js"></script>
+
+All below operations will be based on boost::gregorian namespace. We created alias <i>dateTime</i> for this namespace for more convenient use.<br /><br />
+
+In point I we are using universal_day() method for getting current day accroding to UTC timezone. Of course output of this and other date-related 
+functions depends on date of invoking. Therefore you will get other output of your appliation every other day you will invoke it. <br />
+universal_day() function returns date class object which has lot of functions for date manipulation and displaying. <br /><br />
+
+In point II we are using months class object to add one month to our current date. Thanks to overloading operator+() you can add date and months 
+class objects and iterate through next and previous months. If you will add one month to the date 1-Jan-2014 you will receive 1-Feb-2014. However if you will 
+add one month to date 31-Jan-2013 you will receive 28-Feb-2013 (because all dates are end days of consecutive months).<br /><br />
+
+In point III we are using date_from_iso_string() method for conversion string formated as "YYYYMMDD" to date class and display its value to standard 
+output. <br /><br />
+
+Point IV presents data_duration object which allow you calculate time intervals. We are using two our date objects today and myBirthdayDate to calculate 
+interval of live of person who was birth at 30-Jun-1985. Then we are using days() method of date_duration class to present calculated interval as number of 
+days.<br /><br />
+
+Point V present how to iterate through consecutive days using day_iterator class and overloaded operator++() operator. As you can see this iteration 
+is adequate to mechanism of <a href="http://cppadventure.blogspot.co.uk/2013/12/stl-iterators-mechanism.html">iteration between consecutive elements of STL containers</a>. Thanks to that we have intuitive way to iterate throgh dates, too. <br /><br />
+
+Of course DateTime library has more useful functions to operate on dates. Lots of details and examples you can find on the offical Boost.DateTime library documentation 
+site here: <a href="http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/examples.html">http://www.boost.org/doc/libs/1_55_0/doc/html/date_time/examples.html</a> <br /><br />
+
+Example from this article you can find on our GitHub account here: <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/dateTime">https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/dateTime</a>
+
