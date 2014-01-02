@@ -32,7 +32,7 @@ int main(int argc, const char **argv)
     cout << "In a 1 month there will be: " << today + ms << endl;
 
     //III - get date based on date as string
-    dateTime::date myBirthdayDate = dateTime::date_from_iso_string("19870629");
+    dateTime::date myBirthdayDate = dateTime::date_from_iso_string("19850630");
     cout << "Your birthday is: " << myBirthdayDate << endl;
 
     //IV - calculate your age in dayse based on date_duration object
