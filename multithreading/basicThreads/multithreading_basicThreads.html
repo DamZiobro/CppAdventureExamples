@@ -1,0 +1,32 @@
+C++11 standard introduces integrated sublibrary for multithreading. It has been moved from boost library. However because multithreading is very important 
+topic in software development I decided to make multithreading tutorial as separate section of this blog. <br /><br />
+
+I will not explain here what multithreading is theory about multithreading, but I will try to explain usage of multithreading based on thread library from
+C++11 standard. If theory explanation will be required for some aspects I will try to put links to separate articles explaining them. <br /><br />
+
+Introduction theory about multithreading you can find on Wikipedia article <a href="http://en.wikipedia.org/wiki/Multithreading_(software)#Multithreading">here</a><br /><br />
+
+This article will present basic threads creation and usage in C++. Code of example you can find here:
+<script src="https://gist.github.com/xmementoit/8289200.js"></script>
+
+Output of the example is (it can be little other - depends how thread will be invoked by OS): 
+<script src="https://gist.github.com/xmementoit/8289230.js"></script>
+
+In point I we are creating new thread where print() function will be invoked. This thread will work parallelly to 
+the main function (main application is second thread called main thread)<br /><br />
+
+Point II shows printing values using for loop invoked from main thread. <br /><br />
+
+Point III is invoking function join() which will wait until thread1 will finish. This is basic synchronization. Without that function 
+there is possible that we will receive termination error if main tread finished and thread1 did not finished its job. <br /><br />
+
+If we do not want to wait until thread1 will finish and do not want to receive termination error we could use detach() function (look point IV). 
+Thanks to that function thread1 will be detached from our main applicatin and will work in the background as deamon thread. We will be able to operate 
+our next function without waiting for its finish if we do not need it. <br /><br />
+
+This is first basic tutorial which presents how to create basic thread to run two separate function in parallel. In next multithreading articles I will show 
+how to pass parameters for multithreading functions, return values, synchronize variables between threads and other thread releated topics. <br /><br />
+
+Code of this example you can find on our GitHub account here: <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/basicThreads">https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/basicThreads</a>
+
+
