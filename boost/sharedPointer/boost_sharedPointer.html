@@ -1,0 +1,23 @@
+Shared pointer is another kind of Boost library's pointer. It is similar to <a href="http://cppadventure.blogspot.co.uk/2013/11/boost-scoped-pointer.html">scoped pointer</a> but shared pointer allows 
+share ownership of object. We are able to assign two or more pointers pointing to the same object (it was impossible for scoped pointer).<br /><br />
+
+Take a look to the example below:
+<script src="https://gist.github.com/xmementoit/8052343.js"></script>
+
+Output of this example is: 
+<script src="https://gist.github.com/xmementoit/8052388.js"></script>
+
+In point I we are initializing two shared pointers pointing to two separate instances of TestClass class, then we are printing 
+its values in point II.<br /><br />
+
+Point III shows use difference between shared pointer and scoped pointer. We are assigning two pointers to the same 
+object of class TestClass. In this point object having testValue==5 is being destroyed (because we remove the only one pointer to that object).
+Also, we have two pointers pointing to objects having testValue==6 now. Note that that object will be destroyed when last 
+shared pointer pointing to them will be destroyed (int our case it is destroyed when we are reaching end of main() function).
+This is key difference between scoped pointer and shared pointer.<br /><br />
+
+In point IV we are printing testValues of objects which are being pointed by our both scoped pointers. Actually, it is the same object 
+so we are getting value 6 in both cases.<br /><br />
+
+Code of this example you can find in our GitHub account:<br />
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/sharedPointer">https://github.com/xmementoit/CppAdventureExamples/tree/master/boost/sharedPointer</a>

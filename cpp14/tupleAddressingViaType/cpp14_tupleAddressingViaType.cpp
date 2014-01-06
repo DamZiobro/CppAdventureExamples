@@ -30,7 +30,7 @@ int main(int argc, const char **argv)
     cout << "Tuple string: " << std::get<2>(myTuple) << endl;
 
     //III - getting tuple element via type name (new in C++14)
-    cout << "Get tuple string element by type: " << std::get<2>(myTuple) << endl;
+    cout << "Get tuple string element by type: " << std::get<string>(myTuple) << endl;
 
     //VI - unable to get tuple int element by type because it is ambiguous
     //cout << "First tuple int by type: " << std::get<int>(myTuple) << endl;
