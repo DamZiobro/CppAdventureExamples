@@ -1,0 +1,21 @@
+Today I would like to show you optimal way of using foreach QT algorithm. I will show you why we should pass elements of foreach algorithm by 
+const reference instead of passing them by value. <br /><br />
+
+Let me explain it on the below example: <br />
+<script src="https://gist.github.com/xmementoit/8491597.js"></script>
+Output of this example is: <br />
+<script src="https://gist.github.com/xmementoit/8491599.js"></script>
+
+In point I we are creating 3 objects of MyClass class and push them to myClasses QList element.<br /><br />
+
+In point II we are using QT foreach algorithm to invoke getValue() method for each object from myClasses list. As you can see on output text for that 
+part of code we are invoking copy constructor before and destructor after invoking getValue() function. It is because we are passing each myClasses list 
+element to foreach algorithm by value. Therefore we are copying that element at the beginning of foreach loop step and removing them (destructing) at the end. 
+This is of course inefficient solution, especially when class of object being copied is big. It decreases performance. of our application. <br /><br />
+
+Solution for that inefficiency is passing elements to foreach QT algorithm by const reference, as shown on point III. Thanks to that we are doing our operations
+on existing objects from myClasses list without copying. As you can see on the output text we are not invoking constructor and destructor foreach element here, 
+so performance is better. <br /><br />
+
+Code of this example you can find on our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/qt/foreachRefCount">https://github.com/xmementoit/CppAdventureExamples/tree/master/qt/foreachRefCount</a>
