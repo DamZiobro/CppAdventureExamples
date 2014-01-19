@@ -26,7 +26,8 @@ int main(int argc, const char **argv)
 
     //II - calculation of sum of vector elements using lambda functions  
     int sum = 0;
-    for_each(myVector.begin(), myVector.end(), [&sum](int value){sum+=value;});
+    for_each(myVector.begin(), myVector.end(), 
+            [&sum](int value){sum+=value;});
 
     //III - print sum of vector elements
     cout << "Sum of vector elements: " << sum << endl;
