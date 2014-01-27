@@ -1,0 +1,22 @@
+This article quickly presents another new C++11 standard feauters - constexpr keyword.  <br /<br />>
+constexpr keyword allows explicitly make functions, variables or object constructors articulted as constant expressions. <br /><br />
+
+For understanding take a look on below example:
+<script src="https://gist.github.com/xmementoit/8655931.js"></script>
+Output of that example is: 
+<script src="https://gist.github.com/xmementoit/8655936.js"></script>
+
+Point I of above example presents usage function return result as constant expression. Until now (until C++03 standard) 
+such line of code made compilation error. It was because return_three() function is not constant expression by default (it was suspition that 
+function return different values in different places compile time). C++11 changes it. We can use constexpr keyword at the beginning of function defintion 
+and define mark it as constant expression (point II) if such function returns constant values in each places during compilation time. <br /><br />
+
+Point III presents how to declare variable as constant expression. Until now we was able to declare variable as constant. However as we know constant 
+expression can sometimes change when user casts it using const_cast operator (avoid it!!! it is evil!!!). constexpr keyword make sure that such 
+variable will be constant during compilation time. <br /><br />
+
+Point IV presents usage of class object like constant expression. In order to create object of user-defined classes as constract expression, constructor 
+of such object has to be marked using constexpr keywork and have to be empty body (look at point V). Otherwise you will see compilation error. 
+
+That's it. I hope you was able to understand constexpr C++11's feature more deeply. Code of above example you can find in our GitHub account as usual:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/constexpr">https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/constexpr</a>
