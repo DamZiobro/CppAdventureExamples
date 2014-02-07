@@ -1,0 +1,25 @@
+C++11 standard provides new form of objects initialization which makes such initialization uniform for different structs and classes and 
+simplify objects construction and initialization process. Thanks to the new process we can initialize many different classes using the same 
+syntax. <br /><br />
+
+Please take a look on the example below:
+<script src="https://gist.github.com/xmementoit/8866233.js"></script>
+
+Output of this example is: 
+<script src="https://gist.github.com/xmementoit/8866262.js"></script> 
+
+In point I we are initializing class of two different objects using C++11 uniform initialization mechanism. On object is created based on 
+struct type (pure struct type without any method - look point II). The second one is created based on MyClass class constructor. <br /><br />
+
+As you can see, despite that we are creating objects of two totally different types, those objects can be created the same way (uniform way).
+This is just uniform unitialization featuere provided in C++11 standard. <br /><br />
+
+Below we are initializating MyStruct object using external function getMyStruct(). You can take a look to the body of that function (point IV).
+As you can see we are implicitly using uniform initialization form of struct MyStruct inside getMyStruct() function to create object.<br /><br />
+
+However you need to be careful with using uniform initialization for classes having <a href="http://cppadventure.blogspot.co.uk/2013/08/c11-initializer-lists.html">initializer_list</a> constructor. 
+In such case, initializer list constructor has higher priority than uniform initialization and constructor will be used instead of uniform initialization.
+So be aware of it and enjoy your C++11 programming :) <br /><br />
+
+Code of this article's example you can find on our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/uniformInitialization">https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/uniformInitialization</a>
