@@ -1,4 +1,4 @@
-Today I would like to present C++ class' feature called <i><b>mutable member field</b></i>. Mutable member field is class' field modifier which allows
+Today I would like to present C++ class' feature called <i><b>mutable class field</b></i>. Mutable class field is class' field modifier which allows
 to change its value even if object of the class is declared as const. <br /><br />
 
 Take a look at the example:
@@ -8,18 +8,18 @@ Output of this example is:
 
 In point I of that example we are defining object of TestClass. Note that this object is const.
 As you can see in point Ia this class has three different member fields (constInt, mutableConstInt, nonConstInt). 
-Those variables are public for this example, but do not worry about encapsultation here. It is just done for simplify this example. 
-As you can see one of this member fields is marked as mutable member file using mutable keyword (mutableConstInt). Such variable can be modified even 
-if object of class TestClass is const. It will be explained in next points of this example. <br /><br />
+Those variables are public for this example, but do not worry about encapsultation here. It is just omitted for simplify this example. 
+As you can see one of this member fields is marked as mutable class file using mutable keyword (mutableConstInt). Such variable <u>can be modified even 
+if object of class TestClass is const</u>. It will be explained in next points of this example. <br /><br />
 
 In point II we are printing default values of testObject object initialized in initialization list of TestClass' default constructor. <br /><br />
 
-Point III is key point of our example. As you noted testObject is const therefore we cannot modified its constInt and nonConstInt members (you can try 
-uncomment first two lines before point III and you will see compilation error, that you are trying to modify read-only object. Try it!).
+Point III is key point of our example. As you noted testObject is const therefore we cannot modify its constInt and nonConstInt members (you can try 
+uncomment first two lines before point III and you will see compilation error, that you are trying to modify read-only object.).
 However modification of mutableConstInt is possible despite that testObject is const. We are assigning value 300 to that member field. It is possible 
-because mutableConstInt is <i>mutable member field</i>. <br /><br />
+thanks to <i>mutable class field</i> feature. <br /><br />
 
-In point IV we are printing values of testObject after modification. As you can see mutableConstInt is really changed and its value is 300 right now.
+In point IV we are printing values of testObject after modification. As you can see mutableConstInt's value is really changed and is equal 300 now.
 
 Code of this example you can find in our GitHub repository: 
 <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/mutableMemberField">https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/mutableMemberField</a>
