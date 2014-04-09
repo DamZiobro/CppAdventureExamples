@@ -1,0 +1,47 @@
+<b>Exception handling</b> is programming feature helpful for programmers to handle run time error conditions. <br /><br />
+
+Run time error conditions can be like division by zero, unable to allocate memory due to scarcity, trying to open a file which doesn’t exist etc. 
+There are two types of exceptions. One is Standard exceptions provided by C++ Standard library and other type is User defined exceptions. <br /><br /> 
+
+Now, to handle any exception, we should understand 3 main block of exception statement which are as follows:
+<ul>
+    <li>
+        <i>throw block</i> - in this block, we throw an exception. The operand of the throw statement decides the type of exception occurred. 
+        Once this line is executed, program jumps to catch block to handle the exception occurred.
+    </li>
+    <li>
+        <i>catch block</i> - is the block where we handle exception. This is also called as exception handler and this block is written immediately 
+        after the try block as shown in example. This can be written similar to a normal function with at least one argument preceding with catch keyword. 
+        We can have more than one handlers with different type of arguments. Then, only the handler that matches its type of argument with the type of the 
+        argument mentioned in throw statement is executed. Also, we can have ellipsis (…) as an argument of the handler i.e catch (…). 
+        That time, irrespective of type of argument used in throw statement, this handler is executed. We can also have nested try-catch blocks. 
+        After catch block is executed, the program execution resumes after the try-catch block but not after the throw statement.
+    </li>
+    <li>
+        <i>try block</i> - is nothing but that block of code where an exception can occur. This block is followed by one or more catch blocks as 
+        required to handle exceptions
+    </li>
+</ul>
+<br />
+
+Let us see few Standard exceptions examples:
+<ul>
+    <li>bad_alloc</li> - this exception is thrown whenever new operator fails to allocate memory. Refer example “StdException.cpp” which is self explanatory.
+    <li>bad_cast</li> - This is thrown when type conversions fails using dynamic_cast
+    <li>bad_typeid</li> -This is thrown by type_id()
+    <li>Bad_exception</li> - This is thrown when any unexpected exception occurs.
+</ul>
+<br />
+
+User defined exceptions can be programmed as shown in the below example: 
+<script src="https://gist.github.com/xmementoit/10285295.js"></script>
+
+Output of that example is as follows: 
+<script src="https://gist.github.com/xmementoit/10285239.js"></script>
+
+In this example, we show how to handle Divide by zero exception. In class DividerWithException we are throwing exception when divisor is equal 0 (we cannot 
+devide by 0). Then in main function we are using try-catch block to handle exception when it occures and operate it. Thanks to that our program does not crash 
+when we are trying to divide by 0, but we can show some message to user to and notify him about wrong data set pushed to DividerWithException object. 
+
+Code of this example you can find our our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/excpetions">https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/excpetions</a>
