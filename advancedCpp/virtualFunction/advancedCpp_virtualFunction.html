@@ -1,0 +1,39 @@
+Today I am going to explain some basic but very important C++ feature - <i>polymorphism</i> and <b>inheritance</b> which is based on <b>virtual functions</b> in C++.
+Virtual functions can be declared by preceding the function with virtual keyword.  The importance of Virtual functions can be understood, 
+when we design classes using inheritance. Virtual functions are special functions which are called using <i>late binding</i> concept. <br />
+<b>Late binding</b> or <b>dynamic binding</b> means that the binding happens during run time using vtable (virtual table) to select the correct 
+virtual method to be called as the code runs. <br /><br />
+
+Let us look at an example for getting more clarity on how Virtual functions work in reality:
+<script src="https://gist.github.com/xmementoit/10281487.js"></script>
+
+Output of that example is:
+<script src="https://gist.github.com/xmementoit/10281325.js"></script>
+
+Point 1 shows how virtual function is declared and defined.<br /><br />
+
+Point 2 shows the inheritance concept i.e class Derived is inherited from class Base using public access specifier.<br /><br />
+
+In point 3, virtual function of class Base is redefined in class Derived which leads to <b>function overriding</b>. 
+Note that the use of keyword virtual is not required if other classes does not derive from Derived class.<br /><br />
+
+From point 4, you can check which function is called for Base and Derived class(look at output). 
+We see that based on the address what base pointer holds, such respective function gets called. <br /><br />
+
+You can also run the same sample program after deleting the virtual keyword. Check the output then:
+<script src="https://gist.github.com/xmementoit/10282253.js"></script>
+
+This is because without using the concept of virtual functions, the compiler does <b>early binding</b>. 
+Early binding or Static binding is nothing but binding the function call to function body during compile time. 
+Irrespective of what base pointer holds (value), the method matching the type of pointer gets called, in this case it is ‘Base’ class method. 
+Now, let us understand how the concept of virtual functions work. 
+Using virtual functions, we can achieve run time selection of methods which needs to be called based on object type. 
+<i>Late binding</i> happens using vtable. Once the compiler sees that a class has a virtual function, it constructs a vtable which 
+consist of addresses of virtual functions of that class. <br />
+Also, compiler places a special pointer called as vpointer i.e VPTR which points to the VTable which happens when an object of that class is constructed. 
+Hence, when we call a virtual function using base class pointer, the compiler fetches the VPTR from the object’s memory, gets the function address from 
+the VTable, thus resolving the virtual function call during run time as shown in the first output. 
+
+Code of this example can be found on our GitHub account: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/virtualFunction">https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/virtualFunction</a>
+
