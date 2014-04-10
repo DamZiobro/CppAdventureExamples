@@ -34,7 +34,7 @@ void print(int firstParam, string& secondParam)
  */
 int main(int argc, const char **argv)
 {
-    //I - creating second thread
+    //I - creating params
     int firstParam = 10;
     string secondParam("startSecondParam");
 

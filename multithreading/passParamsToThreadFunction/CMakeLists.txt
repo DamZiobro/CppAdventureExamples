@@ -16,8 +16,6 @@ set(SRC
 #==============================================================================
 #compilation and installation project
 
-target_link_libraries("pthread")
-
 add_executable(${PROJECT_NAME} ${SRC})
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
 
