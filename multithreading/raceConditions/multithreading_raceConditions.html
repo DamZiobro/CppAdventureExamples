@@ -37,10 +37,40 @@ In point III and IIIa we are invoking loop which increases intValue variable in 
 That sharing intValue in both threads causes race condition here which causes different outputs for another invoking of our application. 
 Let's take a detailed look at it. <br /><br />
 
+Remember that we are in multithreaded environment where things happens in parallel. Two for loop (from two threads) works in parallel and we have intValue shared between threads.
+Because threads are managed by operating system we do not know when (after which instruction) operating of for loop from main thread is switched to 
+operating second thread. <br /> 
 
+Now consider following situation. We have following statement: <br />
+<font face="courier">intValue = intValue + 1</font> <br />
+That statement consist of 3 steps in the background:
+<ul>
+    <li>read value of <font face="courier">intValue</font> and store it in temporary variable <font face="courier">tmp</font></li> 
+    <li>increase value of <font face="courier">tmp</font> by 1</li>
+    <li>write value of tmp to <font face="courier">intValue</font></li>
+</ul>
+Everything is ok when we have one thread application because those steps are invoked sequentially. However for multithreaded application there is possible following 
+sequence of steps. 
+Assume that <font face="courier">intValue == 100</font>
+<ul>
+    <li>thread1 reads value of <font face="courier">intValue</font>and stores it in <font face="courier">tmp1 (tmp1 == 100)</font></li>
+    <li>thread2 reads value of <font face="courier">value</font> (which is reference to value so basically it is the same variable as intValue) and stores it in 
+        <font face="courier">tmp2 (tmp2 == 100)</font></li>
+    <li>thread1 increase value of <font face="courier">tmp1</font> by 1 <font face="courier">(tmp1 == 101)</font></li>
+    <li>thread2 increase value of <font face="courier">tmp2</font> by 1 <font face="courier">(tmp2 == 101)</font></li>
+    <li>thread1 writes value of <font face="courier">tmp1</font> into <font face="courier">intValue (intValue == 101)</font></li>
+    <li>thread2 writes value of <font face="courier">tmp2</font> into value <font face="courier">value (value == 101)</font></li>
+</ul>
+We got it. Can you see problem with race condition right now? We expected increment of intValue two times while it was applied only once in such situation! <br /><br />
 
-Of course such ambiguous output is undesirable and it is programmer's work to make it unambiguous. Some technique how to synchronize usage of shared 
-resources between threads will be presented in next C++11 Multithreading article. 
+As you can imaging such such situation can occur many many times while our loop has 1000000 steps. Of course it sometimes occures and sometimes we have normal 
+sequential invocation (depends how operating system switches threads). Therefore we receive other results when we invoke our application many times. I hope you got it.  <br /><br />
+
+Of course such ambiguous output cause by race conditions is undesirable and it is programmer's work to make it unambiguous. Some technique how to synchronize usage of shared 
+resources between threads will be presented in next C++11 Multithreading article. <br /><br />
+
+I encourage you to think and write some other examples when race conditions can occur and experiment with them for better undestanding that very important phenomenon of 
+multithreading programming.
 
 Code of this article you can find in our GitHub account here: 
 <a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditions">https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditions</a>
