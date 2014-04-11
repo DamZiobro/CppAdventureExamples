@@ -1,0 +1,33 @@
+<b>Stack unwinding</b> is normally a concept of removing function entries from <i>call stack</i> (also known as Execution stack, Control stack, 
+Function stack or Run-time stack). Call Stack is a stack data structure that stores active functions' addresses and helps in supporting function 
+call/return mechanism. Every time when a function is called, an entry is made into Call stack which contains the return address of the calling function 
+where the control needs to return after the execution of called function. This entry is called by various names like <b>stack frame</b>, activation frame or 
+activation record. <br /><br />
+
+With respect to exception handling, stack Unwinding is a process of linearly searching function call stack to reach exception handler. 
+When an exception occurs, if it is not handled in current function where it is thrown, the function Call Stack is unwound until the control 
+reaches try block and then passes to catch block at the end of try block to handle exception. <br />
+Also, in this process, it takes care to free memory used from stack. <br /><br />
+
+Let us see an example to understand how this happens: 
+<script src="https://gist.github.com/xmementoit/10295023.js"></script>
+<br />
+
+<i>Output1</i> (When exception is not thrown ): 
+<script src="https://gist.github.com/xmementoit/10294959.js"></script>
+<br />
+
+<i>Output2</i> (When exception is thrown):
+<script src="https://gist.github.com/xmementoit/10294897.js"></script>
+<br />
+
+
+Check from <i>Output1</i> that in case of normal execution (without exceptions), Stack unwinding happens from the top i.e latest function call and also 
+Destructor of each object in each function is called when the execution of function completes.<br /><br />
+
+Check from <i>Output2</i> that when exception is thrown, each called function terminates abruptly instead of returning to calling function normally. 
+Note that in this case also, program frees stack memory and continues freeing the stack until it reaches exception handler. 
+This process is called as stack unwinding. <br /><br /> 
+
+Code of this example can be found on our GitHub account here: <br />
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/stackUnwinding">https://github.com/xmementoit/CppAdventureExamples/tree/master/advancedCpp/stackUnwinding</a>

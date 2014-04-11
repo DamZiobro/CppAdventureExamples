@@ -1,0 +1,37 @@
+Today I am going to present you second article about new C++11 Multithreading feature. I am going to present you <b>how we can pass parameters to thread 
+function (by value and by reference) as well as show you how to delay thread processing for selected amount of time</b>. <br /><br />
+
+In previous <a href="http://cppadventure.blogspot.co.uk/2014/01/c-multithreading-basic-thread-creation.html">C++ Multithreading article</a> 
+we presented how to create thread function and run second thread in parallel to main thread. 
+Now we are extending that example with usage of another multithreding features. Let take a look on the new example: <br />
+<script src="https://gist.github.com/xmementoit/10403884.js"></script>
+
+Output of that example could be (it can be little other output on your machine because we are working with Multithreading which is not protected by 
+phenomenon called <i>race condition</i> which I will explain in one of another articles):
+<script src="https://gist.github.com/xmementoit/10403636.js"></script>
+
+
+In point I and II we are creating new thread which will invoke function <font face="courier">print()</font>  from point Ia. Difference to the example from previus article 
+is that we are passing two parameters to our function. First parameter <font face="courier">firstParam</font> is passed by value, second parameter <font face="courier">secondParam</font> is passed by reference. <br /><br />
+
+Notice that while we are passing parameters by reference to thread function we need to use <font face="courier">std::ref()</font> function. It is because, std::thread constructor creates 
+new function object based on names of our function, passed parameters and <font face="courier">std::bind()</font> function withing its body. Because we are using std::bind function we
+are using <i>copies</i> of our parameters, so without using <font face="courier">std::ref</font> we would create reference to copied paramter which we passed to <font face="courier">std::thread</font> constructor. <br /><br />
+
+In such situation our when we would change value of our <font face="courier">secondParam</font> in the body of <font face="courier">print()</font> second thread's function, it would not be visible in main thread's 
+function because inside <font face="courier">print()</font> function we would operate on <i>reference to copy</i> of <font face="courier">secondParam</font> object. You can experiment with it on your machine. Try 
+to remove <font face="courier">std::ref</font> function and pass <font face="courier">secondParam</font> as normal reference. Compare your and ours output. You should not see value: <i>startSecondParam_modified</i> 
+for <font face="courier">secondParam</font> parameter inside main thread (in second thread this value is applied, of course).<br /><br />
+
+In point IIa and III we are printing values of <font face="courier">firstParam</font> and <font face="courier">secondParam</font> for both threads with modifications during processing. You can see that changes 
+to <font face="courier">secondParam</font> value done in second thread are visible in main thread as well (because we are properly passing <font face="courier">secondParam</font> to second thread by reference). <br /><br />
+
+One more new feature of C++11 multithreading which is introduced in this example you can notice in point IV. Function <font face="courier">std::thread::sleep_for()</font> is being used 
+for stoping working of thread which it is invoked on for selected amount of time. We are using <font face="courier">std::chrono::milliseconds()</font> function (new function for C++11 as well)
+to sleep our main thread for 10 ms (in order to wait for modification of <font face="courier">secondParam</font> in second thread). This is simple example of delaying processing 
+inside particular thread. <br /><br />
+
+Point V should be known from previous article. We are waiting for finishing second thread before leavin from our main application (main thread). <br /><br />
+
+Code of this example can be found on our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/passParamsToThreadFunction">https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/passParamsToThreadFunction</a>
