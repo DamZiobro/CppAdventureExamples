@@ -1,0 +1,46 @@
+In the <a href="http://cppadventure.blogspot.co.uk/2014/04/c-multithreading-passing-parameters-to.html">previous C++ Multithreading article</a> I presented 
+how to pass parameters between threads for you. Take a detail look on the output of that example once again: <br /><br />
+<script src="https://gist.github.com/xmementoit/10403636.js"></script>
+
+In the first line of that output you can notice that output text from two threads is mixed. You are probably wondering why it happens? <br /><br />
+
+It is because we are not protecting resources which are shared by two threads (in this example cout stream is shared in both threads) which causes 
+multithreading's phenomenon called <i><b>race condition</b></i>. <br /><br />
+
+Because threads switching and accessing to shared members are managed by operating system we do not know when std::cout stream will be accessed by main 
+thread and when it will be accessed by second thread. Therefore in the previous article I mentioned that output of the example can be little different on 
+your computer than my output example. What's more it is possible that this output will be different for few consecutive invoking of the example on 
+the same machine. It is because of race condition access to std::cout between main thread and second thread. <br /><br />
+
+In theory, <i><b>race condition</b> is any situation where output of some operation (ex. function return) depends on relative ordering of execution of some 
+    operations on two or more threads</i>. It is one of the biggest problems during multithreading-based programming. <br /><br /> 
+
+For better understanding race conditions take a look on another example below: 
+<script src="https://gist.github.com/xmementoit/10479195.js"></script>
+
+Try to compile and invoke that example few times on your computer. What is a result? Are you suprised? <br />
+On my computer three invokings of that examples returned three different results: 
+<script src="https://gist.github.com/xmementoit/10479360.js"></script>
+
+It is of course because of race condition. Let's analyse that example step by step to understand why race conditions occurs here. <br /><br />
+
+In point I we are creating  <font face="courier">intValue</font> variable which will be shared and increased in both threads in parallel. <br /><br />
+
+Operation in point II should be known. We are creating new thread here. One news here is that we are pushing <a href="http://cppadventure.blogspot.co.uk/2013/09/advanced-c-function-object.html">http://cppadventure.blogspot.co.uk/2013/09/advanced-c-function-object.html</a>
+instead of <i>normal</i> function as thread function which will be invoked in parallel. One more interesting thing which you should notice in this 
+instruction is <b>additional pair of brackets</b> around <font face="courier">ThreadClass()</font>. Those additional brackets have to be use in the situation where we 
+are passing function object to thread creating function in order to avoid ambiguity with invoking function which takes one parameter (pointer to the 
+function which takes no parameters and returns ThreadClass object) and returns <font face="courier">std::thread</font> type object rather than creating new thread.
+It is little complicated but rethink it and you should understand <br /><br />
+
+In point III and IIIa we are invoking loop which increases intValue variable in parallel (in main thread and in parallel thread because we passed it by reference). 
+That sharing intValue in both threads causes race condition here which causes different outputs for another invoking of our application. 
+Let's take a detailed look at it. <br /><br />
+
+
+
+Of course such ambiguous output is undesirable and it is programmer's work to make it unambiguous. Some technique how to synchronize usage of shared 
+resources between threads will be presented in next C++11 Multithreading article. 
+
+Code of this article you can find in our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditions">https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditions</a>
