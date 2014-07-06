@@ -1,0 +1,28 @@
+Today I would like to present another new feature of C++11 standard - <b><i>noexcept</i></b> specifier. This specifier allows to specify 
+function which does not throw any exception. It should be used be used wherever possible to notify user that function should be throw 
+and it makes such function non-throwable self-documented (similar to usage <i>const </i>). <br /><br />
+
+Its usage is similar to usage <i>const</i> function specifier. The difference is that while const function tries to modify data it we 
+have compilation error. In case of <i>nonexcept</i> funcion throws any exception, code compiles, however it <i>std::terminate</i> function 
+is invoked when we achieve throwing exception in such function. 
+
+To understand it better, take a look on below example:
+<script src="https://gist.github.com/xmementoit/1bef255c3238ce8ef8f3.js"></script>
+
+Output of this example is: 
+<script src="https://gist.github.com/xmementoit/8cad76817911628a5ab6.js"></script> 
+
+In point I, we are defining function as non-throwable using <i>noexcept</i> specifier. Such function should not throw, 
+however in our example we are throwing exception in order to present what happens when <i>noexcept</i> function tries to throw exception. <br /><br /> 
+
+In point II, we are defining additional funciton which we will set up as our terminate function. <br /><br /> 
+
+We are assigning that funtion as terminate function in point III and replacing default std::terminate function by our terminateFunction. 
+This function will be invoked when we will try to throw any exception in our noexcept testFunction. <br /><br /> 
+
+In point IV we are invoking our testFunction which is <i>noexcept</i> function. However, because our function throws any exception and is specified as 
+<i>noexcept</i> our custimized std::terminate function (terminateFunction()) will be invoked and application will abort dumping core file (which is visible 
+in last line of output which we received from out example). <br /><br />
+
+Example used above you can find on our GitHub account here:
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/noexcept">https://github.com/xmementoit/CppAdventureExamples/tree/master/cpp11/noexcept</a>
