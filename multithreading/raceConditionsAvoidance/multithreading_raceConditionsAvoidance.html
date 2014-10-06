@@ -1,0 +1,60 @@
+This article presents how to avoid problem of <a href="http://cppadventure.blogspot.co.uk/2014/04/c-multithreading-race-conditions.html">Race conditions</a> described in <a href="http://cppadventure.blogspot.co.uk/2014/04/c-multithreading-race-conditions.html">this</a> article. <br /><br />
+
+As we already know race conditions can occur when two or more threads are trying to invoke some part of 
+code or use the same resource (ex. variable) at the time. That can cause problem of unexpected results. We 
+could see that problem in <a href="http://cppadventure.blogspot.co.uk/2014/04/c-multithreading-race-conditions.html">'Race conditions'</a> 
+article where two threads was able to modify the same variable <font face="courier">value</font> which caused 
+different program output every time we invoked it. <br /><br />
+
+In order to avoid that problem we should synchronize operations of our threads using multithreading mechanism 
+called <b>mutexes</b> (abbr. <i>Mutual exclusion</i>). Mutex is some kind of program flow control lock which 
+which is able to make sure that some part of code locked by itself can be invoked by only one thread at the same 
+time. Such locked part of code is called <b>critical section</b>. <br /><br />
+
+When other thread will try to go into critical section it will be blocked and will need to wait until previous 
+thread will unlock mutex of that critical section. <br /><br />
+
+For better understanding that mechanism let's take a look on 'Race conditions' example code containing mechanism 
+of mutexes to avoid race condition problem:
+<script src="https://gist.github.com/xmementoit/a4437e27f9105e0e406b.js"></script>
+Output of that code is (always the same):
+<script src="https://gist.github.com/xmementoit/1a43c0eec656217832db.js"></script>
+
+You can invoke that code few times and you will see that output of that example is always the same right now. 
+It is because of synchronization mechanism. Let's analyze our synchronization mechanism using mutexes. <br /><br />
+
+In point I we are declaring variable <font face="courier">increment_mutex</font> which is our mutex used for synchronization. <br /><br />
+
+Now take a look on point II and III. As you know from previous article our race condition is caused by 
+increment of variable <font face="courier">value</font> in two threads. We sould put such incrementation into 
+critical section locked by our mutex <font face="courier">increment_mutex</font>. <br /><br />
+
+<font face="courier">mutex</font> type has functions <b><font face="courier">lock()</font></b> and <b><font face="courier">unlock()</font></b>
+which could be start point and end point of critical section. We could invoke <font face="courier">increment_mutex.lock()</font>
+to start critical section and <font face="courier">increment_mutex.unlock</font> to finish critical section. This is enough 
+mechanism for synchronization our mechanism of incrementation. Notice commented critical sections in point II and III. 
+
+However, better method of creating critical section in C++11 code is using <b><font face="courier">lock_guard</font></b> mechanism.
+That mechanism uses RAII idiom which allows to create critical section start in the place of creating <font face="courier">lock_guard</font>
+typed variable. End point of such critical section is end of scope where such variable is defined (most often it is 
+nearest close curly bracket sign '}' as in our situation). Such lock_guard object invokes <font face="courier">mutex.lock()</font> function in 
+constructur of itself and <font face="courier">mutex.unlock()</font> function in the destructor of itself. Thanks to that 
+we do not need to remember close critical section initialized by mutex. Non closing critical section could cause problem 
+of deadlock which will be described in one of next articles. <br /><br />
+
+Right now we have good working synchronized multithreaded program. Output is always the same which is expected. 
+However, notice that our program works slower right now. Let's analyze time of working our application using 
+Linux's <a href="http://man7.org/linux/man-pages/man7/time.7.html"><font face="courier">time</font></a> command for 
+previous (containing race conditions) and current application (synchronized). 
+
+<script src="https://gist.github.com/xmementoit/f676dab9bade4693458e.js"></script>
+
+<b>Why is synchronized application slower?</b> The answer is simple. Because there is high possibility that two threads
+working in parallel <b><i>will have to wait</i></b> each other before go to critical section. As I describe above 
+when one thread is going to go into critical section (<font face="courier">mutex.lock()</font> function) which is 
+locked by other thread it needs to wait for thread to exit such critical section (<font face="courier">mutex.unlock()</font> function). 
+Sum of such <i>waitings</i> causes that application is slower. <br /><br />
+
+Code of above application can be found as usual on our GitHub account here: 
+<a href="https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditionsAvoidance">https://github.com/xmementoit/CppAdventureExamples/tree/master/multithreading/raceConditionsAvoidance</a>
+
