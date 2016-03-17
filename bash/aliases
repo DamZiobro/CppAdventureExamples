@@ -1,0 +1,44 @@
+#==================================================================
+# Listing aliases 
+alias ll="ls -lah"
+#list only directoriesj
+alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
+alias sl='ls'
+
+#==================================================================
+#filter selected app from running commands 
+alias pg="ps aux --sort=start_time | grep"
+#list all apps runned by me and sort by start time
+alias pm="ps aux --sort=start_time | egrep '^$USER'"
+
+#==================================================================
+# BUILD ALIASES
+# speed up make + make install using all available CPU cores
+alias mi="make -j`nproc` && sudo make -j`nproc` install"
+
+#==================================================================
+# OTHER ALIASES
+# show last notes to syslog file quickly 
+alias lg="tail -f /var/log/syslog"
+# speed up wget in parallel (on 16 threads)
+alias wgetp="aria2c -x 16 -s 16"
+#generate 12-character long password 
+alias passgen="strings /dev/urandom | tr -cd '[:alnum:]' | fold -w 12 | head -n 1"
+# retart apache2 server
+alias aprst="sudo /etc/init.d/apache2 restart"
+# show open ports
+alias ports='netstat -tulanp'
+# ps 10 memory and cpu consuming processes 
+alias psmem='ps auxf | sort -nr -k 4 | head -10'
+alias pscpu='ps auxf | sort -nr -k 3 | head -10'
+
+alias k="sudo kill"
+alias ka="sudo killall"
+
+#==================================================================
+# Navigation shortcuts
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."

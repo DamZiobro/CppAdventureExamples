@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/projects/CppAdventureExamples/bash/aliases.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="conf">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="colorscheme" content="badwolf">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #121212; }
+body { font-family: monospace; color: #ffffff; background-color: #121212; }
+* { font-size: 1em; }
+.String { color: #ffd787; }
+.LineNr { color: #626262; background-color: #121212; padding-bottom: 1px; }
+.Comment { color: #767676; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+<body onload='JumpToLine();'>
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr"> 1 </span><span class="Comment">#==================================================================</span>
+<span id="L2" class="LineNr"> 2 </span><span class="Comment"># Listing aliases </span>
+<span id="L3" class="LineNr"> 3 </span>alias ll=<span class="String">&quot;ls -lah&quot;</span>
+<span id="L4" class="LineNr"> 4 </span><span class="Comment">#list only directoriesj</span>
+<span id="L5" class="LineNr"> 5 </span>alias lsd=<span class="String">&quot;ls -lF ${colorflag} | grep --color=never '^d'&quot;</span>
+<span id="L6" class="LineNr"> 6 </span>alias sl=<span class="String">'ls'</span>
+<span id="L7" class="LineNr"> 7 </span>
+<span id="L8" class="LineNr"> 8 </span><span class="Comment">#==================================================================</span>
+<span id="L9" class="LineNr"> 9 </span><span class="Comment">#filter selected app from running commands </span>
+<span id="L10" class="LineNr">10 </span>alias pg=<span class="String">&quot;ps aux --sort=start_time | grep&quot;</span>
+<span id="L11" class="LineNr">11 </span><span class="Comment">#list all apps runned by me and sort by start time</span>
+<span id="L12" class="LineNr">12 </span>alias pm=<span class="String">&quot;ps aux --sort=start_time | egrep '^$USER'&quot;</span>
+<span id="L13" class="LineNr">13 </span>
+<span id="L14" class="LineNr">14 </span><span class="Comment">#==================================================================</span>
+<span id="L15" class="LineNr">15 </span><span class="Comment"># BUILD ALIASES</span>
+<span id="L16" class="LineNr">16 </span><span class="Comment"># speed up make + make install using all available CPU cores</span>
+<span id="L17" class="LineNr">17 </span>alias mi=<span class="String">&quot;make -j`nproc` &amp;&amp; sudo make -j`nproc` install&quot;</span>
+<span id="L18" class="LineNr">18 </span>
+<span id="L19" class="LineNr">19 </span><span class="Comment">#==================================================================</span>
+<span id="L20" class="LineNr">20 </span><span class="Comment"># OTHER ALIASES</span>
+<span id="L21" class="LineNr">21 </span><span class="Comment"># show last notes to syslog file quickly </span>
+<span id="L22" class="LineNr">22 </span>alias lg=<span class="String">&quot;tail -f /var/log/syslog&quot;</span>
+<span id="L23" class="LineNr">23 </span><span class="Comment"># speed up wget in parallel (on 16 threads)</span>
+<span id="L24" class="LineNr">24 </span>alias wgetp=<span class="String">&quot;aria2c -x 16 -s 16&quot;</span>
+<span id="L25" class="LineNr">25 </span><span class="Comment">#generate 12-character long password </span>
+<span id="L26" class="LineNr">26 </span>alias passgen=<span class="String">&quot;strings /dev/urandom | tr -cd '[:alnum:]' | fold -w 12 | head -n 1&quot;</span>
+<span id="L27" class="LineNr">27 </span><span class="Comment"># retart apache2 server</span>
+<span id="L28" class="LineNr">28 </span>alias aprst=<span class="String">&quot;sudo /etc/init.d/apache2 restart&quot;</span>
+<span id="L29" class="LineNr">29 </span><span class="Comment"># show open ports</span>
+<span id="L30" class="LineNr">30 </span>alias ports=<span class="String">'netstat -tulanp'</span>
+<span id="L31" class="LineNr">31 </span><span class="Comment"># ps 10 memory and cpu consuming processes </span>
+<span id="L32" class="LineNr">32 </span>alias psmem=<span class="String">'ps auxf | sort -nr -k 4 | head -10'</span>
+<span id="L33" class="LineNr">33 </span>alias pscpu=<span class="String">'ps auxf | sort -nr -k 3 | head -10'</span>
+<span id="L34" class="LineNr">34 </span>
+<span id="L35" class="LineNr">35 </span>alias k=<span class="String">&quot;sudo kill&quot;</span>
+<span id="L36" class="LineNr">36 </span>alias ka=<span class="String">&quot;sudo killall&quot;</span>
+<span id="L37" class="LineNr">37 </span>
+<span id="L38" class="LineNr">38 </span><span class="Comment">#==================================================================</span>
+<span id="L39" class="LineNr">39 </span><span class="Comment"># Navigation shortcuts</span>
+<span id="L40" class="LineNr">40 </span>alias ..=<span class="String">&quot;cd ..&quot;</span>
+<span id="L41" class="LineNr">41 </span>alias ...=<span class="String">&quot;cd ../..&quot;</span>
+<span id="L42" class="LineNr">42 </span>alias ....=<span class="String">&quot;cd ../../..&quot;</span>
+<span id="L43" class="LineNr">43 </span>alias .....=<span class="String">&quot;cd ../../../..&quot;</span>
+<span id="L44" class="LineNr">44 </span>alias ......=<span class="String">&quot;cd ../../../../..&quot;</span>
+</pre>
+</body>
+</html>
+<!-- vim: set foldmethod=manual : -->
