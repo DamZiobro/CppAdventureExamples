@@ -10,7 +10,6 @@
 <style type="text/css">
 <!--
 pre { font-family: monospace; color: #ffffff; background-color: #121212; }
-body { font-family: monospace; color: #ffffff; background-color: #121212; }
 * { font-size: 1em; }
 .Repeat { color: #ff0000; }
 .Operator { color: #ff0000; }
@@ -129,27 +128,27 @@ On the top of that output, you see the graph of memory usage where you can quick
 <pre id='vimCodeElement2'>
 <span id="L1" class="LineNr"> 1 </span>
 <span id="L2" class="LineNr"> 2 </span>    KB
-<span id="L3" class="LineNr"> 3 </span>16.45^                                                                       #
-<span id="L4" class="LineNr"> 4 </span>     |                                                                       #
-<span id="L5" class="LineNr"> 5 </span>     |                                                                      :#
-<span id="L6" class="LineNr"> 6 </span>     |                                                                      @#
-<span id="L7" class="LineNr"> 7 </span>     |                                                                      @#
-<span id="L8" class="LineNr"> 8 </span>     |                                                                      @#
-<span id="L9" class="LineNr"> 9 </span>     |                                                                     :@#
-<span id="L10" class="LineNr">10 </span>     |                                                                     @@#
-<span id="L11" class="LineNr">11 </span>     |                                                                     @@#
-<span id="L12" class="LineNr">12 </span>     |                                                                    @@@#
-<span id="L13" class="LineNr">13 </span>     |                                                                    @@@#
-<span id="L14" class="LineNr">14 </span>     |                                                                    @@@#
-<span id="L15" class="LineNr">15 </span>     |                                                                   @@@@#
-<span id="L16" class="LineNr">16 </span>     |                                                                   @@@@#
-<span id="L17" class="LineNr">17 </span>     |                                                                   @@@@#
-<span id="L18" class="LineNr">18 </span>     |                                                                  :@@@@#
-<span id="L19" class="LineNr">19 </span>     |                                                                  @@@@@#
-<span id="L20" class="LineNr">20 </span>     |                                                                  @@@@@#
-<span id="L21" class="LineNr">21 </span>     |                                                                 :@@@@@#
-<span id="L22" class="LineNr">22 </span>     |                                                                 :@@@@@#
-<span id="L23" class="LineNr">23 </span>   0 +-----------------------------------------------------------------------&gt;ki
+<span id="L3" class="LineNr"> 3 </span>16.45^                                 #
+<span id="L4" class="LineNr"> 4 </span>     |                                 #
+<span id="L5" class="LineNr"> 5 </span>     |                                :#
+<span id="L6" class="LineNr"> 6 </span>     |                                @#
+<span id="L7" class="LineNr"> 7 </span>     |                                @#
+<span id="L8" class="LineNr"> 8 </span>     |                                @#
+<span id="L9" class="LineNr"> 9 </span>     |                               :@#
+<span id="L10" class="LineNr">10 </span>     |                               @@#
+<span id="L11" class="LineNr">11 </span>     |                               @@#
+<span id="L12" class="LineNr">12 </span>     |                              @@@#
+<span id="L13" class="LineNr">13 </span>     |                              @@@#
+<span id="L14" class="LineNr">14 </span>     |                              @@@#
+<span id="L15" class="LineNr">15 </span>     |                             @@@@#
+<span id="L16" class="LineNr">16 </span>     |                             @@@@#
+<span id="L17" class="LineNr">17 </span>     |                             @@@@#
+<span id="L18" class="LineNr">18 </span>     |                            :@@@@#
+<span id="L19" class="LineNr">19 </span>     |                            @@@@@#
+<span id="L20" class="LineNr">20 </span>     |                            @@@@@#
+<span id="L21" class="LineNr">21 </span>     |                           :@@@@@#
+<span id="L22" class="LineNr">22 </span>     |                           :@@@@@#
+<span id="L23" class="LineNr">23 </span>   0 +---------------------------------&gt;ki
 <span id="L24" class="LineNr">24 </span>     0                                                                   143.3
 <span id="L25" class="LineNr">25 </span>
 </pre>
@@ -157,25 +156,25 @@ On the top of that output, you see the graph of memory usage where you can quick
 Below, you have reports of which functions, how what amount of memory allocates over time. We have multiple memory leaks in our example. Let's focus on following repeating statement:
 <pre id='vimCodeElement3'>
 <span id="L1" class="LineNr"> 1 </span>
-<span id="L2" class="LineNr"> 2 </span>-&gt;58.39% (2,200B) 0x400596: allocmem1 (in /home/damian/article/a.out)
-<span id="L3" class="LineNr"> 3 </span>| -&gt;58.39% (2,200B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
-<span id="L4" class="LineNr"> 4 </span>|   -&gt;58.39% (2,200B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
-<span id="L5" class="LineNr"> 5 </span>|     -&gt;58.39% (2,200B) 0x400625: main (in /home/damian/article/a.out)
+<span id="L2" class="LineNr"> 2 </span>-&gt;58.39% (2,200B) 0x400596: allocmem1 
+<span id="L3" class="LineNr"> 3 </span>| -&gt;58.39% (2,200B) 0x4005BC: allocmem2 
+<span id="L4" class="LineNr"> 4 </span>|   -&gt;58.39% (2,200B) 0x4005DE: allocmem3 
+<span id="L5" class="LineNr"> 5 </span>|     -&gt;58.39% (2,200B) 0x400625: main 
 <span id="L6" class="LineNr"> 6 </span>...
-<span id="L7" class="LineNr"> 7 </span>67.82% (3,695B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-<span id="L8" class="LineNr"> 8 </span>-&gt;58.74% (3,200B) 0x400596: allocmem1 (in /home/damian/article/a.out)
-<span id="L9" class="LineNr"> 9 </span>| -&gt;58.74% (3,200B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
-<span id="L10" class="LineNr">10 </span>|   -&gt;58.74% (3,200B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+<span id="L7" class="LineNr"> 7 </span>67.82% (3,695B) 
+<span id="L8" class="LineNr"> 8 </span>-&gt;58.74% (3,200B) 0x400596: allocmem1 
+<span id="L9" class="LineNr"> 9 </span>| -&gt;58.74% (3,200B) 0x4005BC: allocmem2 
+<span id="L10" class="LineNr">10 </span>|   -&gt;58.74% (3,200B) 0x4005DE: allocmem3 
 <span id="L11" class="LineNr">11 </span>...
-<span id="L12" class="LineNr">12 </span>-&gt;59.15% (6,700B) 0x400596: allocmem1 (in /home/damian/article/a.out)
-<span id="L13" class="LineNr">13 </span>| -&gt;59.15% (6,700B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
-<span id="L14" class="LineNr">14 </span>|   -&gt;59.15% (6,700B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
-<span id="L15" class="LineNr">15 </span>|     -&gt;59.15% (6,700B) 0x400625: main (in /home/damian/article/a.out)
+<span id="L12" class="LineNr">12 </span>-&gt;59.15% (6,700B) 0x400596: allocmem1 
+<span id="L13" class="LineNr">13 </span>| -&gt;59.15% (6,700B) 0x4005BC: allocmem2 
+<span id="L14" class="LineNr">14 </span>|   -&gt;59.15% (6,700B) 0x4005DE: allocmem3 
+<span id="L15" class="LineNr">15 </span>|     -&gt;59.15% (6,700B) 0x400625: main 
 <span id="L16" class="LineNr">16 </span>...
-<span id="L17" class="LineNr">17 </span>-&gt;59.35% (10,000B) 0x400596: allocmem1 (in /home/damian/article/a.out)
-<span id="L18" class="LineNr">18 </span>| -&gt;59.35% (10,000B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
-<span id="L19" class="LineNr">19 </span>|   -&gt;59.35% (10,000B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
-<span id="L20" class="LineNr">20 </span>|     -&gt;59.35% (10,000B) 0x400625: main (in /home/damian/article/a.out)
+<span id="L17" class="LineNr">17 </span>-&gt;59.35% (10,000B) 0x400596: allocmem1 
+<span id="L18" class="LineNr">18 </span>| -&gt;59.35% (10,000B) 0x4005BC: allocmem2 
+<span id="L19" class="LineNr">19 </span>|   -&gt;59.35% (10,000B) 0x4005DE: allocmem3 
+<span id="L20" class="LineNr">20 </span>|     -&gt;59.35% (10,000B) 0x400625: main 
 </pre>
 
 That statement contains function which allocates memory (ex. allocmem1) and its caller functions. We can quickly see that memory allocated by fucntion allocmem1 increases with time (2,200B, 3,695B, 6,700B ...). *It indicates memory leak*. </br>
