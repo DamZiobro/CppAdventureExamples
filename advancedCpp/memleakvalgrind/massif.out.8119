@@ -1,0 +1,879 @@
+desc: (none)
+cmd: ./a.out
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=132926
+mem_heap_B=5
+mem_heap_extra_B=19
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=133135
+mem_heap_B=130
+mem_heap_extra_B=110
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=133393
+mem_heap_B=360
+mem_heap_extra_B=216
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=133651
+mem_heap_B=590
+mem_heap_extra_B=322
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=133909
+mem_heap_B=820
+mem_heap_extra_B=428
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=134167
+mem_heap_B=1050
+mem_heap_extra_B=534
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=134425
+mem_heap_B=1280
+mem_heap_extra_B=640
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=134683
+mem_heap_B=1510
+mem_heap_extra_B=746
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=134941
+mem_heap_B=1740
+mem_heap_extra_B=852
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=135199
+mem_heap_B=1970
+mem_heap_extra_B=958
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=135457
+mem_heap_B=2200
+mem_heap_extra_B=1064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=135586
+mem_heap_B=2315
+mem_heap_extra_B=1117
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=135715
+mem_heap_B=2430
+mem_heap_extra_B=1170
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=135844
+mem_heap_B=2545
+mem_heap_extra_B=1223
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2545 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 2200 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 2200 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 2200 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 2200 0x400625: main (in /home/damian/article/a.out)
+ n1: 220 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 220 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 220 0x400625: main (in /home/damian/article/a.out)
+ n1: 115 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 115 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=15
+#-----------
+time=135973
+mem_heap_B=2660
+mem_heap_extra_B=1276
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=136102
+mem_heap_B=2775
+mem_heap_extra_B=1329
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=136231
+mem_heap_B=2890
+mem_heap_extra_B=1382
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=136360
+mem_heap_B=3005
+mem_heap_extra_B=1435
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=136489
+mem_heap_B=3120
+mem_heap_extra_B=1488
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=136618
+mem_heap_B=3235
+mem_heap_extra_B=1541
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=136747
+mem_heap_B=3350
+mem_heap_extra_B=1594
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=136876
+mem_heap_B=3465
+mem_heap_extra_B=1647
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=137005
+mem_heap_B=3580
+mem_heap_extra_B=1700
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=137134
+mem_heap_B=3695
+mem_heap_extra_B=1753
+mem_stacks_B=0
+heap_tree=detailed
+n4: 3695 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3200 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 3200 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 3200 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 3200 0x400625: main (in /home/damian/article/a.out)
+ n1: 320 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 320 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 320 0x400625: main (in /home/damian/article/a.out)
+ n1: 165 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 165 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=25
+#-----------
+time=137263
+mem_heap_B=3810
+mem_heap_extra_B=1806
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=137392
+mem_heap_B=3925
+mem_heap_extra_B=1859
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=137521
+mem_heap_B=4040
+mem_heap_extra_B=1912
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=137650
+mem_heap_B=4155
+mem_heap_extra_B=1965
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=137779
+mem_heap_B=4270
+mem_heap_extra_B=2018
+mem_stacks_B=0
+heap_tree=detailed
+n4: 4270 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 3700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 3700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 3700 0x400625: main (in /home/damian/article/a.out)
+ n1: 370 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 370 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 370 0x400625: main (in /home/damian/article/a.out)
+ n1: 190 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 190 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=30
+#-----------
+time=137908
+mem_heap_B=4385
+mem_heap_extra_B=2071
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=138037
+mem_heap_B=4500
+mem_heap_extra_B=2124
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=138166
+mem_heap_B=4615
+mem_heap_extra_B=2177
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=138295
+mem_heap_B=4730
+mem_heap_extra_B=2230
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=138424
+mem_heap_B=4845
+mem_heap_extra_B=2283
+mem_stacks_B=0
+heap_tree=detailed
+n4: 4845 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4200 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 4200 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 4200 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 4200 0x400625: main (in /home/damian/article/a.out)
+ n1: 420 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 420 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 420 0x400625: main (in /home/damian/article/a.out)
+ n1: 215 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 215 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=35
+#-----------
+time=138553
+mem_heap_B=4960
+mem_heap_extra_B=2336
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=138682
+mem_heap_B=5075
+mem_heap_extra_B=2389
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=138811
+mem_heap_B=5190
+mem_heap_extra_B=2442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=138940
+mem_heap_B=5305
+mem_heap_extra_B=2495
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=139069
+mem_heap_B=5420
+mem_heap_extra_B=2548
+mem_stacks_B=0
+heap_tree=detailed
+n4: 5420 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 4700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 4700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 4700 0x400625: main (in /home/damian/article/a.out)
+ n1: 470 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 470 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 470 0x400625: main (in /home/damian/article/a.out)
+ n1: 240 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 240 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=40
+#-----------
+time=139198
+mem_heap_B=5535
+mem_heap_extra_B=2601
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=139327
+mem_heap_B=5650
+mem_heap_extra_B=2654
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=139456
+mem_heap_B=5765
+mem_heap_extra_B=2707
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=139585
+mem_heap_B=5880
+mem_heap_extra_B=2760
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=139714
+mem_heap_B=5995
+mem_heap_extra_B=2813
+mem_stacks_B=0
+heap_tree=detailed
+n4: 5995 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 5200 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 5200 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 5200 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 5200 0x400625: main (in /home/damian/article/a.out)
+ n1: 520 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 520 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 520 0x400625: main (in /home/damian/article/a.out)
+ n1: 265 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 265 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=45
+#-----------
+time=139843
+mem_heap_B=6110
+mem_heap_extra_B=2866
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=139972
+mem_heap_B=6225
+mem_heap_extra_B=2919
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=140101
+mem_heap_B=6340
+mem_heap_extra_B=2972
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=140230
+mem_heap_B=6455
+mem_heap_extra_B=3025
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=140359
+mem_heap_B=6570
+mem_heap_extra_B=3078
+mem_stacks_B=0
+heap_tree=detailed
+n4: 6570 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 5700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 5700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 5700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 5700 0x400625: main (in /home/damian/article/a.out)
+ n1: 570 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 570 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 570 0x400625: main (in /home/damian/article/a.out)
+ n1: 290 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 290 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=50
+#-----------
+time=140488
+mem_heap_B=6685
+mem_heap_extra_B=3131
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=140617
+mem_heap_B=6800
+mem_heap_extra_B=3184
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=140746
+mem_heap_B=6915
+mem_heap_extra_B=3237
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=140875
+mem_heap_B=7030
+mem_heap_extra_B=3290
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=141004
+mem_heap_B=7145
+mem_heap_extra_B=3343
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=141133
+mem_heap_B=7260
+mem_heap_extra_B=3396
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=141262
+mem_heap_B=7375
+mem_heap_extra_B=3449
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=141391
+mem_heap_B=7490
+mem_heap_extra_B=3502
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=141520
+mem_heap_B=7605
+mem_heap_extra_B=3555
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=141649
+mem_heap_B=7720
+mem_heap_extra_B=3608
+mem_stacks_B=0
+heap_tree=detailed
+n4: 7720 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 6700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 6700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 6700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 6700 0x400625: main (in /home/damian/article/a.out)
+ n1: 670 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 670 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 670 0x400625: main (in /home/damian/article/a.out)
+ n1: 340 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 340 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=60
+#-----------
+time=141778
+mem_heap_B=7835
+mem_heap_extra_B=3661
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=141907
+mem_heap_B=7950
+mem_heap_extra_B=3714
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=142036
+mem_heap_B=8065
+mem_heap_extra_B=3767
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=142165
+mem_heap_B=8180
+mem_heap_extra_B=3820
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=142294
+mem_heap_B=8295
+mem_heap_extra_B=3873
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=142423
+mem_heap_B=8410
+mem_heap_extra_B=3926
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=142552
+mem_heap_B=8525
+mem_heap_extra_B=3979
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=142681
+mem_heap_B=8640
+mem_heap_extra_B=4032
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=142810
+mem_heap_B=8755
+mem_heap_extra_B=4085
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=142939
+mem_heap_B=8870
+mem_heap_extra_B=4138
+mem_stacks_B=0
+heap_tree=detailed
+n4: 8870 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 7700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 7700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 7700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 7700 0x400625: main (in /home/damian/article/a.out)
+ n1: 770 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 770 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 770 0x400625: main (in /home/damian/article/a.out)
+ n1: 390 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 390 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=70
+#-----------
+time=143068
+mem_heap_B=8985
+mem_heap_extra_B=4191
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=143197
+mem_heap_B=9100
+mem_heap_extra_B=4244
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=143326
+mem_heap_B=9215
+mem_heap_extra_B=4297
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=143455
+mem_heap_B=9330
+mem_heap_extra_B=4350
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=143584
+mem_heap_B=9445
+mem_heap_extra_B=4403
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=143713
+mem_heap_B=9560
+mem_heap_extra_B=4456
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=143842
+mem_heap_B=9675
+mem_heap_extra_B=4509
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=143971
+mem_heap_B=9790
+mem_heap_extra_B=4562
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=144100
+mem_heap_B=9905
+mem_heap_extra_B=4615
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=144229
+mem_heap_B=10020
+mem_heap_extra_B=4668
+mem_stacks_B=0
+heap_tree=detailed
+n4: 10020 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 8700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 8700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 8700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 8700 0x400625: main (in /home/damian/article/a.out)
+ n1: 870 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 870 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 870 0x400625: main (in /home/damian/article/a.out)
+ n1: 440 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 440 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=80
+#-----------
+time=144358
+mem_heap_B=10135
+mem_heap_extra_B=4721
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=144487
+mem_heap_B=10250
+mem_heap_extra_B=4774
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=82
+#-----------
+time=144616
+mem_heap_B=10365
+mem_heap_extra_B=4827
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=83
+#-----------
+time=144745
+mem_heap_B=10480
+mem_heap_extra_B=4880
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=84
+#-----------
+time=144874
+mem_heap_B=10595
+mem_heap_extra_B=4933
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=85
+#-----------
+time=145003
+mem_heap_B=10710
+mem_heap_extra_B=4986
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=86
+#-----------
+time=145132
+mem_heap_B=10825
+mem_heap_extra_B=5039
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=87
+#-----------
+time=145261
+mem_heap_B=10940
+mem_heap_extra_B=5092
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=88
+#-----------
+time=145390
+mem_heap_B=11055
+mem_heap_extra_B=5145
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=89
+#-----------
+time=145519
+mem_heap_B=11170
+mem_heap_extra_B=5198
+mem_stacks_B=0
+heap_tree=detailed
+n4: 11170 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 9700 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 9700 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 9700 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 9700 0x400625: main (in /home/damian/article/a.out)
+ n1: 970 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 970 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 970 0x400625: main (in /home/damian/article/a.out)
+ n1: 490 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 490 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)
+#-----------
+snapshot=90
+#-----------
+time=145648
+mem_heap_B=11285
+mem_heap_extra_B=5251
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=91
+#-----------
+time=145777
+mem_heap_B=11400
+mem_heap_extra_B=5304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=92
+#-----------
+time=146753
+mem_heap_B=11510
+mem_heap_extra_B=5338
+mem_stacks_B=0
+heap_tree=peak
+n4: 11510 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 10000 0x400596: allocmem1 (in /home/damian/article/a.out)
+  n1: 10000 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+   n1: 10000 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+    n0: 10000 0x400625: main (in /home/damian/article/a.out)
+ n1: 1000 0x4005AE: allocmem2 (in /home/damian/article/a.out)
+  n1: 1000 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+   n0: 1000 0x400625: main (in /home/damian/article/a.out)
+ n1: 500 0x4005D0: allocmem3 (in /home/damian/article/a.out)
+  n0: 500 0x400625: main (in /home/damian/article/a.out)
+ n0: 10 in 2 places, all below massif's threshold (01.00%)

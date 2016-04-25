@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>~/article/main.c.html</title>
+<meta name="Generator" content="Vim/7.4">
+<meta name="plugin-version" content="vim7.4_v1">
+<meta name="syntax" content="c">
+<meta name="settings" content="number_lines,use_css,no_foldcolumn,expand_tabs,line_ids,prevent_copy=">
+<meta name="colorscheme" content="badwolf">
+<style type="text/css">
+<!--
+pre { font-family: monospace; color: #ffffff; background-color: #121212; }
+body { font-family: monospace; color: #ffffff; background-color: #121212; }
+* { font-size: 1em; }
+.Repeat { color: #ff0000; }
+.Operator { color: #ff0000; }
+.StorageClass { color: #ff0000; }
+.Statement { color: #ff0000; font-weight: bold; }
+.PreProc { color: #afd700; }
+.Type { color: #ff87af; }
+.Error { color: #ffffff; background-color: #ff0000; padding-bottom: 1px; font-weight: bold; }
+.String { color: #ffd787; }
+.Number { color: #af875f; font-weight: bold; }
+.potionOperator { color: #87d7ff; }
+.bracketsOperator { color: #00ffff; font-weight: bold; }
+.separators { color: #ff00af; font-weight: bold; }
+.ConstantValue { color: #d78700; font-weight: bold; }
+.cCustomFunc { color: #00af00; font-weight: bold; }
+.cCustomFunctionDefinition { color: #00afff; font-weight: bold; }
+.LineNr { color: #626262; background-color: #121212; padding-bottom: 1px; }
+-->
+</style>
+
+<script type='text/javascript'>
+<!--
+
+/* function to open any folds containing a jumped-to line before jumping to it */
+function JumpToLine()
+{
+  var lineNum;
+  lineNum = window.location.hash;
+  lineNum = lineNum.substr(1); /* strip off '#' */
+
+  if (lineNum.indexOf('L') == -1) {
+    lineNum = 'L'+lineNum;
+  }
+  lineElem = document.getElementById(lineNum);
+  /* Always jump to new location even if the line was hidden inside a fold, or
+   * we corrected the raw number to a line ID.
+   */
+  if (lineElem) {
+    lineElem.scrollIntoView(true);
+  }
+  return true;
+}
+if ('onhashchange' in window) {
+  window.onhashchange = JumpToLine;
+}
+
+-->
+</script>
+</head>
+Every C/C++ software developer meet problem of memory leak (allocating memory over time which is not freed). </br> </br>
+
+If you would like to know how to investigate memory leak problem in your application, this article is for you.</br> </br> 
+
+For memory leak investigation I recommend to use <a href="http://valgrind.org/" target=_blank>valgrind</a> tool. Especially with it's Massif tool.
+Let's see the example how we could use that tool for memory leak investigation.
+
+Below snippet of code has lots of points where memory leak can occur.
+<pre id='vimCodeElement'>
+<span id="L1" class="LineNr"> 1 </span><span class="PreProc">#include </span><span class="String">&lt;stdio.h&gt;</span>
+<span id="L2" class="LineNr"> 2 </span>
+<span id="L3" class="LineNr"> 3 </span><span class="Type">void</span> <span class="cCustomFunctionDefinition">allocmem1</span><span class="bracketsOperator">()</span>
+<span id="L4" class="LineNr"> 4 </span><span class="Error">{</span>
+<span id="L5" class="LineNr"> 5 </span>    <span class="Type">char</span><span class="potionOperator">*</span> memleak<span class="ConstantValue">2 </span><span class="potionOperator">=</span> <span class="cCustomFunc">malloc</span><span class="bracketsOperator">(</span><span class="Number">100</span><span class="potionOperator">*</span><span class="Operator">sizeof</span><span class="bracketsOperator">(</span><span class="Type">char</span><span class="bracketsOperator">))</span><span class="separators">;</span>
+<span id="L6" class="LineNr"> 6 </span><span class="Error">}</span>
+<span id="L7" class="LineNr"> 7 </span>
+<span id="L8" class="LineNr"> 8 </span><span class="Type">void</span> <span class="cCustomFunctionDefinition">allocmem2</span><span class="bracketsOperator">()</span>
+<span id="L9" class="LineNr"> 9 </span><span class="Error">{</span>
+<span id="L10" class="LineNr">10 </span>    <span class="Type">char</span><span class="potionOperator">*</span> memleak<span class="ConstantValue">2 </span><span class="potionOperator">=</span> <span class="cCustomFunc">malloc</span><span class="bracketsOperator">(</span><span class="Number">10</span><span class="potionOperator">*</span><span class="Operator">sizeof</span><span class="bracketsOperator">(</span><span class="Type">char</span><span class="bracketsOperator">))</span><span class="separators">;</span>
+<span id="L11" class="LineNr">11 </span>    <span class="cCustomFunc">allocmem1</span><span class="bracketsOperator">()</span><span class="separators">;</span>
+<span id="L12" class="LineNr">12 </span><span class="Error">}</span>
+<span id="L13" class="LineNr">13 </span>
+<span id="L14" class="LineNr">14 </span><span class="Type">void</span> <span class="cCustomFunctionDefinition">allocmem3</span><span class="bracketsOperator">()</span>
+<span id="L15" class="LineNr">15 </span><span class="Error">{</span>
+<span id="L16" class="LineNr">16 </span>    <span class="Type">char</span><span class="potionOperator">*</span> memleak<span class="ConstantValue">2 </span><span class="potionOperator">=</span> <span class="cCustomFunc">malloc</span><span class="bracketsOperator">(</span><span class="Number">5</span><span class="potionOperator">*</span><span class="Operator">sizeof</span><span class="bracketsOperator">(</span><span class="Type">char</span><span class="bracketsOperator">))</span><span class="separators">;</span>
+<span id="L17" class="LineNr">17 </span>    <span class="cCustomFunc">allocmem2</span><span class="bracketsOperator">()</span><span class="separators">;</span>
+<span id="L18" class="LineNr">18 </span><span class="Error">}</span>
+<span id="L19" class="LineNr">19 </span>
+<span id="L20" class="LineNr">20 </span><span class="Type">int</span> <span class="cCustomFunctionDefinition">main</span><span class="bracketsOperator">(</span><span class="Type">int</span> argc<span class="separators">,</span> <span class="StorageClass">const</span> <span class="Type">char</span> <span class="potionOperator">**</span>argv<span class="bracketsOperator">)</span>
+<span id="L21" class="LineNr">21 </span><span class="Error">{</span>
+<span id="L22" class="LineNr">22 </span>    <span class="Type">char</span><span class="potionOperator">*</span> memleak<span class="ConstantValue">1 </span><span class="potionOperator">=</span> <span class="cCustomFunc">malloc</span><span class="bracketsOperator">(</span><span class="Number">5</span><span class="potionOperator">*</span><span class="Operator">sizeof</span><span class="bracketsOperator">(</span><span class="Type">char</span><span class="bracketsOperator">))</span><span class="separators">;</span>
+<span id="L23" class="LineNr">23 </span>    <span class="Type">char</span><span class="potionOperator">*</span> memfreed <span class="potionOperator">=</span> <span class="cCustomFunc">malloc</span><span class="bracketsOperator">(</span><span class="Number">5</span><span class="potionOperator">*</span><span class="Operator">sizeof</span><span class="bracketsOperator">(</span><span class="Type">char</span><span class="bracketsOperator">))</span><span class="separators">;</span>
+<span id="L24" class="LineNr">24 </span>
+<span id="L25" class="LineNr">25 </span>    <span class="Type">int</span> i<span class="potionOperator">=</span><span class="Number">0</span><span class="separators">;</span>
+<span id="L26" class="LineNr">26 </span>    <span class="Repeat">for</span> <span class="bracketsOperator">(</span>i<span class="potionOperator">=</span><span class="Number">0</span><span class="separators">;</span> i<span class="potionOperator">&lt;</span><span class="Number">100</span><span class="separators">;</span> i<span class="potionOperator">++</span><span class="bracketsOperator">)</span><span class="Error">{</span>
+<span id="L27" class="LineNr">27 </span>      <span class="cCustomFunc">allocmem3</span><span class="bracketsOperator">()</span><span class="separators">;</span>
+<span id="L28" class="LineNr">28 </span>    <span class="Error">}</span>
+<span id="L29" class="LineNr">29 </span>
+<span id="L30" class="LineNr">30 </span>    <span class="cCustomFunc">free</span><span class="bracketsOperator">(</span>memfreed<span class="bracketsOperator">)</span><span class="separators">;</span>
+<span id="L31" class="LineNr">31 </span>    <span class="Statement">return</span> <span class="Number">0</span><span class="separators">;</span>
+<span id="L32" class="LineNr">32 </span><span class="bracketsOperator">}</span>
+<span id="L33" class="LineNr">33 </span>
+<span id="L34" class="LineNr">34 </span>
+</pre>
+
+First, save above code in main.c file and compile it: 
+<pre>
+gcc main.c  -o main
+</pre>
+</br>
+
+Next, examine memory leak occurances using valgrind tool:
+<pre>
+valgrind --tool=massif ./a.out
+</pre>
+</br>
+
+Output of above command should be empty for our example. However, notice that new file has been created in the directory where you invoked valgrind from (<b>massif.out.PID</b>). That file contaisn valgrind data which we will use for our memory leak investigation. 
+
+Let's make that data human readable. Use <b>ms_print</b> tool for it:
+<pre>
+ms_print massif.out.PID
+</pre></br>
+
+Output of ms_print command allows you to detect where your memory leak are.  </br>
+On the top of that output, you see the graph of memory usage where you can quickly see that we have memory leak. It should look like this one:
+<pre id='vimCodeElement2'>
+<span id="L1" class="LineNr"> 1 </span>
+<span id="L2" class="LineNr"> 2 </span>    KB
+<span id="L3" class="LineNr"> 3 </span>16.45^                                                                       #
+<span id="L4" class="LineNr"> 4 </span>     |                                                                       #
+<span id="L5" class="LineNr"> 5 </span>     |                                                                      :#
+<span id="L6" class="LineNr"> 6 </span>     |                                                                      @#
+<span id="L7" class="LineNr"> 7 </span>     |                                                                      @#
+<span id="L8" class="LineNr"> 8 </span>     |                                                                      @#
+<span id="L9" class="LineNr"> 9 </span>     |                                                                     :@#
+<span id="L10" class="LineNr">10 </span>     |                                                                     @@#
+<span id="L11" class="LineNr">11 </span>     |                                                                     @@#
+<span id="L12" class="LineNr">12 </span>     |                                                                    @@@#
+<span id="L13" class="LineNr">13 </span>     |                                                                    @@@#
+<span id="L14" class="LineNr">14 </span>     |                                                                    @@@#
+<span id="L15" class="LineNr">15 </span>     |                                                                   @@@@#
+<span id="L16" class="LineNr">16 </span>     |                                                                   @@@@#
+<span id="L17" class="LineNr">17 </span>     |                                                                   @@@@#
+<span id="L18" class="LineNr">18 </span>     |                                                                  :@@@@#
+<span id="L19" class="LineNr">19 </span>     |                                                                  @@@@@#
+<span id="L20" class="LineNr">20 </span>     |                                                                  @@@@@#
+<span id="L21" class="LineNr">21 </span>     |                                                                 :@@@@@#
+<span id="L22" class="LineNr">22 </span>     |                                                                 :@@@@@#
+<span id="L23" class="LineNr">23 </span>   0 +-----------------------------------------------------------------------&gt;ki
+<span id="L24" class="LineNr">24 </span>     0                                                                   143.3
+<span id="L25" class="LineNr">25 </span>
+</pre>
+
+Below, you have reports of which functions, how what amount of memory allocates over time. We have multiple memory leaks in our example. Let's focus on following repeating statement:
+<pre id='vimCodeElement3'>
+<span id="L1" class="LineNr"> 1 </span>
+<span id="L2" class="LineNr"> 2 </span>-&gt;58.39% (2,200B) 0x400596: allocmem1 (in /home/damian/article/a.out)
+<span id="L3" class="LineNr"> 3 </span>| -&gt;58.39% (2,200B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+<span id="L4" class="LineNr"> 4 </span>|   -&gt;58.39% (2,200B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+<span id="L5" class="LineNr"> 5 </span>|     -&gt;58.39% (2,200B) 0x400625: main (in /home/damian/article/a.out)
+<span id="L6" class="LineNr"> 6 </span>...
+<span id="L7" class="LineNr"> 7 </span>67.82% (3,695B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+<span id="L8" class="LineNr"> 8 </span>-&gt;58.74% (3,200B) 0x400596: allocmem1 (in /home/damian/article/a.out)
+<span id="L9" class="LineNr"> 9 </span>| -&gt;58.74% (3,200B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+<span id="L10" class="LineNr">10 </span>|   -&gt;58.74% (3,200B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+<span id="L11" class="LineNr">11 </span>...
+<span id="L12" class="LineNr">12 </span>-&gt;59.15% (6,700B) 0x400596: allocmem1 (in /home/damian/article/a.out)
+<span id="L13" class="LineNr">13 </span>| -&gt;59.15% (6,700B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+<span id="L14" class="LineNr">14 </span>|   -&gt;59.15% (6,700B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+<span id="L15" class="LineNr">15 </span>|     -&gt;59.15% (6,700B) 0x400625: main (in /home/damian/article/a.out)
+<span id="L16" class="LineNr">16 </span>...
+<span id="L17" class="LineNr">17 </span>-&gt;59.35% (10,000B) 0x400596: allocmem1 (in /home/damian/article/a.out)
+<span id="L18" class="LineNr">18 </span>| -&gt;59.35% (10,000B) 0x4005BC: allocmem2 (in /home/damian/article/a.out)
+<span id="L19" class="LineNr">19 </span>|   -&gt;59.35% (10,000B) 0x4005DE: allocmem3 (in /home/damian/article/a.out)
+<span id="L20" class="LineNr">20 </span>|     -&gt;59.35% (10,000B) 0x400625: main (in /home/damian/article/a.out)
+</pre>
+
+That statement contains function which allocates memory (ex. allocmem1) and its caller functions. We can quickly see that memory allocated by fucntion allocmem1 increases with time (2,200B, 3,695B, 6,700B ...). *It indicates memory leak*. </br>
+Now you can see that for our example we have memory leak in function allocmem1. </br>
+Try to analyze remaining output statements and deduct where other memory leak exists <.br>
+
+That's it. Hopefully this quick example shows you how to quickly investigate memory leaks in your application using Valgrind tool. <.br> I encourage you to experiment with creating your own memory leak samples and investigateing them using Valgrind _ Massif. </br></.br>
+
+
+More info about valgrind + massif investigation can be found here: <a href="http://valgrind.org/docs/manual/ms-manual.html" target=_blank>Valgrind + Massif</a>
+
+Good luck with your memory leak investigation.
+</html>
