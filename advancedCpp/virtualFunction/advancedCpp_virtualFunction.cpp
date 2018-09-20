@@ -15,7 +15,7 @@ using namespace std;
 class Base{
 	public :
 		//Point 1 Virtual Function Declaration and Definition
-		void Show(){
+		virtual void Show(){
 			cout << "Show() of class Base" << endl ;
 		}
 
@@ -43,6 +43,6 @@ int main() {
 	cout << "Base pointer points Derived object" << endl;
 	pBase->Show();
     
-    return 0;
+  return 0;
 }
 
